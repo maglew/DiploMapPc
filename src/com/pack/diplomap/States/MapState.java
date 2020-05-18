@@ -28,7 +28,7 @@ MapInterface mapInterface;
     JButton moveButt;
     JButton zoomInButt;
     JButton zoomOutButt;
-
+    JComboBox comboBox1;
     public MapState(Handler handler)
     {
 
@@ -42,6 +42,13 @@ MapInterface mapInterface;
         moveButt= new JButton("move");
         zoomInButt= new JButton("zoom IN");
         zoomOutButt= new JButton("zoom OUT");
+        String[] items = {
+                "Room",
+                "Edge",
+                "Wall"
+        };
+
+         comboBox1 = new JComboBox(items);
 
         canvas=new Canvas();
         canvas.setPreferredSize(new Dimension(1000, 900));
@@ -56,7 +63,8 @@ MapInterface mapInterface;
         this.add(moveButt);
         this.add(zoomInButt);
         this.add(zoomOutButt);
-
+        this.add(comboBox1);
+        comboBox1.setEditable(true);
         this.add(canvas);
 
     }
@@ -81,6 +89,7 @@ mapInterface=new MapInterface();
     {
         mapCamera.tick();
         drawMap.tick(new MyPoint(mapCamera.getWorldloc()),mapCamera.getZoom());
+        mapInterface.tick();
     }
 
     @Override
@@ -93,13 +102,15 @@ mapInterface=new MapInterface();
 
     void buttlistadd()
     {
-     /*   this.add(redButt);
-        this.add(delButt);
-        this.add(createButt);
-        this.add(moveButt);
-        this.add(zoomInButt);
-        this.add(zoomOutButt);
-      */
+        comboBox1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+
+                JComboBox box = (JComboBox)event.getSource();
+                String item = (String)box.getSelectedItem();
+                mapInterface.typeObj=item;
+            }
+        });
+
         redButt.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                mapInterface.regime="redact";

@@ -3,6 +3,8 @@ package com.pack.diplomap.MapObjects;
 
 
 
+import com.pack.diplomap.Interface.MapCamera;
+
 import java.awt.*;
 import java.io.Serializable;
 
@@ -15,51 +17,31 @@ public class Edge extends MapElement implements Serializable
     byte[] types = { 0, 1, 1, 1 };
     public Edge(MyPoint coord)
     {
-        //  bordType.addRange(types);
         this.movable = true;
-       // this.id = Guid.NewGuid();
         location = coord;
         relativeLocation = location;
-        //locpoints.add(coord);
-        //relpoints.add(locpoints[0]);
-        //this.location = coord;
-        //this.relativeLocation = location;
 
         this.touchzone.add(new MyPoint(relativeLocation.x - width / 2-5, relativeLocation.y - width / 2-5));
         this.touchzone.add(new MyPoint(relativeLocation.x - width / 2 + 5, relativeLocation.y - width / 2 - 5));
         this.touchzone.add(new MyPoint(relativeLocation.x - width / 2 + 5, relativeLocation.y - width / 2 + 5));
         this.touchzone.add(new MyPoint(relativeLocation.x - width / 2 - 5, relativeLocation.y - width / 2 + 5));
-/*
-        bordType.add(0);
-        bordType.add(1);
-        bordType.add(1);
-        bordType.add(1);
-        */
+
         elemid = ++MapElement.numInstances + "E";
     }
 
     public Edge()
     {
-        //  bordType.addRange(types);
+
         this.movable = true;
-        // this.id = Guid.NewGuid();
+
         location = new MyPoint(0,0);
         relativeLocation = location;
-        //locpoints.add(coord);
-        //relpoints.add(locpoints[0]);
-        //this.location = coord;
-        //this.relativeLocation = location;
 
         this.touchzone.add(new MyPoint(relativeLocation.x - width / 2-5, relativeLocation.y - width / 2-5));
         this.touchzone.add(new MyPoint(relativeLocation.x - width / 2 + 5, relativeLocation.y - width / 2 - 5));
         this.touchzone.add(new MyPoint(relativeLocation.x - width / 2 + 5, relativeLocation.y - width / 2 + 5));
         this.touchzone.add(new MyPoint(relativeLocation.x - width / 2 - 5, relativeLocation.y - width / 2 + 5));
-/*
-        bordType.add(0);
-        bordType.add(1);
-        bordType.add(1);
-        bordType.add(1);
-        */
+
         elemid = ++MapElement.numInstances + "E";
     }
 
@@ -90,32 +72,38 @@ public class Edge extends MapElement implements Serializable
     public  void render(Graphics g)
 {
 
-    g.setColor(Color.red);
+    g.setColor(Color.yellow);
 
 
 
     g.drawRect( relativeLocation.x - width / 4, relativeLocation.y - width / 4, width / 2, width / 2);
 
- //  float[]a;
-    //touchzone.toArray();
-  //  g.drawPoints ( touchzone.toArray(a[]),p);
+
+
+    g.setColor(Color.red);
+    Polygon poly=new Polygon();
+    for(int i=0;i<touchzone.size();i++)
+    {
+        poly.addPoint(touchzone.get(i).x,touchzone.get(i).y);
+    }
+
+    g.drawPolygon(poly);
+
 
 }
-/*
+
 @Override
-    public  void move(Point coord)
+    public  void move(MyPoint coord)
 {
     this.relativeLocation = coord;
-    this.location = new MyPoint(relativeLocation.x- MapCamera.getWorldLoc().x, relativeLocation.y - MapCamera.getWorldLoc().y);
+    this.location = new MyPoint(relativeLocation.x- MapCamera.worldlocation.x, relativeLocation.y - MapCamera.worldlocation.y);
 
 }
-*/
 
-/*
-    public override bool touchhit(Point coord)
-{
 
-    return base.touchhit(coord);
-}
-*/
+
+    @Override
+    public boolean touchhit(Point coord) {
+        return super.touchhit(coord);
+    }
 }

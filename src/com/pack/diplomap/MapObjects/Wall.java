@@ -79,6 +79,15 @@ elemid =++MapElement.numInstances+"W";
     //g.DrawPolygon(pen2, touchzone.ToArray());
 
      */
+
+    g.setColor(Color.red);
+    Polygon poly=new Polygon();
+    for(int i=0;i<touchzone.size();i++)
+    {
+        poly.addPoint(touchzone.get(i).x,touchzone.get(i).y);
+    }
+
+    g.drawPolygon(poly);
 }
 
 

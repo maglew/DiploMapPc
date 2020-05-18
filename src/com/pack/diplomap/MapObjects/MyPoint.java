@@ -6,8 +6,8 @@ import java.io.Serializable;
 public class MyPoint implements Serializable
 {
     private static final long serialVersionUID = -1215152604847457796L;
-    int x;
-    int y;
+   public int x;
+    public int y;
 
     public MyPoint(int x, int y) {
         this.x = x;

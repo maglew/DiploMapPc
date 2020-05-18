@@ -44,7 +44,7 @@ Handler handler;
 
     public  void render(Graphics g)
     {
-       g.setColor(Color.YELLOW);
+       g.setColor(Color.yellow);
        // g.drawRect(screenRect.x,screenRect.y,screenRect.width,screenRect.height);
         g.drawString("worldloc: "+relativeworldlocation.toString(),750,50);
         g.drawString("cursor: "+MouseManager.cursorLoc.toString(),750,65);
@@ -60,10 +60,6 @@ Handler handler;
         g.drawString("entered: "+MouseManager.entered,750,200);
 
     }
-
-
-
-
 
 
 

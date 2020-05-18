@@ -11,7 +11,7 @@ public class DrawMap implements Serializable
 
 
     private static final long serialVersionUID = -6515152604847457796L;
-    public static int selectedfloor = 0;
+    public  int selectedfloor = 0;
     public ArrayList<DrawMapFloor> floors = new ArrayList<>();
 
 

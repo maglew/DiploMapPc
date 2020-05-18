@@ -146,7 +146,14 @@ public class Room extends MapElement implements Serializable
 
     }
 */
+    g.setColor(Color.red);
+    Polygon poly=new Polygon();
+    for(int i=0;i<touchzone.size();i++)
+    {
+        poly.addPoint(touchzone.get(i).x,touchzone.get(i).y);
+    }
 
+    g.drawPolygon(poly);
 }
 
 /*
