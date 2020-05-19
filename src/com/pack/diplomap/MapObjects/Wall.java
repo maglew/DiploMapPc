@@ -24,12 +24,7 @@ public class Wall extends MapElement implements Serializable
         touchzone.add(new MyPoint(B.relativeLocation.x + 3, B.relativeLocation.y - 3));
         touchzone.add(new MyPoint(B.relativeLocation.x - 3, B.relativeLocation.y + 3));
         touchzone.add(new MyPoint(A.relativeLocation.x - 3, A.relativeLocation.y + 3));
-/*
-        bordType.add(0);
-        bordType.add(1);
-        bordType.add(1);
-        bordType.add(1);
-*/
+
 elemid =++MapElement.numInstances+"W";
     }
 
@@ -45,12 +40,7 @@ elemid =++MapElement.numInstances+"W";
         touchzone.add(new MyPoint(B.relativeLocation.x + 3, B.relativeLocation.y - 3));
         touchzone.add(new MyPoint(B.relativeLocation.x - 3, B.relativeLocation.y + 3));
         touchzone.add(new MyPoint(A.relativeLocation.x - 3, A.relativeLocation.y + 3));
-/*
-        bordType.add(0);
-        bordType.add(1);
-        bordType.add(1);
-        bordType.add(1);
-*/
+
         elemid =++MapElement.numInstances+"W";
     }
 
@@ -71,16 +61,13 @@ elemid =++MapElement.numInstances+"W";
 @Override
     public  void render(Graphics g)
 {
-    /*
-    Paint p=new Paint();
-    p.setColor(Color.GREEN);
-    p.setStrokeWidth(3);
-    canvas.drawLine(A.relativeLocation.x,A.relativeLocation.y,B.relativeLocation.x,B.relativeLocation.y,p);
-    //g.DrawPolygon(pen2, touchzone.ToArray());
+    g.setColor(Color.GREEN);
 
-     */
 
-    g.setColor(Color.red);
+    g.drawLine(A.relativeLocation.x,A.relativeLocation.y,B.relativeLocation.x,B.relativeLocation.y);
+
+
+    g.setColor(Color.blue);
     Polygon poly=new Polygon();
     for(int i=0;i<touchzone.size();i++)
     {

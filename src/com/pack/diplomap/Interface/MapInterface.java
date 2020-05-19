@@ -26,9 +26,7 @@ public class MapInterface
 
     public MapInterface()
     {
-
     }
-
 
     public void tick()
     {
@@ -45,15 +43,16 @@ public class MapInterface
                 }
                 break;
             case "create":
+                //razn = new MyPoint(0, 0);
 
                 if (typeObj == "Edge" && MouseManager.left && schot == 0)
                 {
-                    State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.addNewEdge(new MyPoint((int)(MouseManager.leftDown.x - MapCamera.worldlocation.x), (int)(MouseManager.leftDown.y - MapCamera.worldlocation.y)));
+                    State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.addNewEdge(new MyPoint((MouseManager.leftDown.x - MapCamera.relativeworldlocation.x), (MouseManager.leftDown.y - MapCamera.relativeworldlocation.y)));
                     schot++;
                 }
                 if (typeObj == "Room" && MouseManager.left && schot == 0)
                 {
-                    State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.addNewRoom(new Point((int)(MouseManager.leftDown.x - MapCamera.worldlocation.x), (int)(MouseManager.leftDown.y - MapCamera.worldlocation.y)));
+                    State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.addNewRoom(new Point((int)(MouseManager.leftDown.x - MapCamera.relativeworldlocation.x), (int)(MouseManager.leftDown.y - MapCamera.relativeworldlocation.y)));
                     schot++;
                 }
                 if (typeObj == "Wall" && MouseManager.left && schot == 0)
@@ -179,56 +178,6 @@ public class MapInterface
         g.drawString(chosedObjId+"",650,110);
         g.drawString(typeObj+"",650,90);
 
-    }
-
-    public void regimemanager(String regime,String operobj)
-    {
-        /*
-        switch (regime){
-            case ("redact"):
-
-                if(Objects.searchObjByCoord(lefttouch)!=-1)
-                {
-                  //  d = new JDialog(handler.getDisplay().getFrame(), "dialog Box");
-                }
-                break;
-            case ("delete"):
-                Objects.delobj(Objects.searchObjByCoord(lefttouch));
-                chosedobj=""+Objects.searchObjByCoord(lefttouch);
-                break;
-            case ("create"):
-                if(Objects.searchObjByCoord(lefttouch)==-1&&handler.getMouseManager().isLeftPressed())
-                {
-                    if(operobj.equals("point"))
-                    {Objects.addNewEdge(new Point(lefttouch.x-worldloc.x, lefttouch.y-worldloc.y));}
-
-                    if(operobj.equals("wall"))
-                    {
-
-                        if(Objects.searchObjByCoord(lefttouch)!=-1)
-                        {
-                            t++;
-                            if(t==1)
-                            { a=Objects.searchObjByCoord(lefttouch);}
-
-                            if(t==2&&a!=Objects.searchObjByCoord(lefttouch))
-                            { b=Objects.searchObjByCoord(lefttouch);}
-                            if(t>2)
-                                t=0;
-                            if(a!=b&&t==2)
-                            {  Objects.addNewWall( a, b);
-                                t=0;
-                            }
-
-                        }
-
-
-                    }
-                }
-
-                break;
-        }
-        */
     }
 
 }

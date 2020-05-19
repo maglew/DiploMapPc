@@ -29,6 +29,7 @@ MapInterface mapInterface;
     JButton zoomInButt;
     JButton zoomOutButt;
     JComboBox comboBox1;
+    JComboBox comboBox2;
     public MapState(Handler handler)
     {
 
@@ -47,8 +48,14 @@ MapInterface mapInterface;
                 "Edge",
                 "Wall"
         };
+        String[] items2 = {
+                "1",
+                "2",
+                "3"
+        };
 
          comboBox1 = new JComboBox(items);
+        comboBox2 = new JComboBox(items2);
 
         canvas=new Canvas();
         canvas.setPreferredSize(new Dimension(1000, 900));
@@ -65,6 +72,8 @@ MapInterface mapInterface;
         this.add(zoomOutButt);
         this.add(comboBox1);
         comboBox1.setEditable(true);
+        this.add(comboBox2);
+        comboBox2.setEditable(true);
         this.add(canvas);
 
     }
@@ -102,6 +111,17 @@ mapInterface=new MapInterface();
 
     void buttlistadd()
     {
+
+        comboBox2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+
+                JComboBox box1 = (JComboBox)event.getSource();
+                String item = (String)box1.getSelectedItem();
+                State.getCurrentState().drawMap.selectedfloor=Integer.parseInt(item)-1;
+                mapInterface.typeObj=item;
+            }
+        });
+
         comboBox1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
 

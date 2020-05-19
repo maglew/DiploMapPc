@@ -2,6 +2,9 @@ package com.pack.diplomap.MapObjects;
 
 
 
+import com.pack.diplomap.Interface.MapCamera;
+import com.pack.diplomap.States.State;
+
 import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,7 +23,7 @@ public class Room extends MapElement implements Serializable
         relativeLocation = location;
 
         this.movable = true;
-      //  this.id = Guid.NewGuid();
+
 
         this.edges.add(A);
         this.edges.add(B);
@@ -36,11 +39,7 @@ public class Room extends MapElement implements Serializable
         touchzone.add(edges.get(1).relativeLocation);
         touchzone.add(edges.get(2).relativeLocation);
         touchzone.add(edges.get(3).relativeLocation);
-/*
-        bordType.add(0);
-        bordType.add(1);
-        bordType.add(1);
-        bordType.add(1);*/
+
 
         dest.add(new MyPoint(0, 0));
         dest.add(new MyPoint(0, 0));
@@ -77,11 +76,6 @@ public class Room extends MapElement implements Serializable
         touchzone.add(edges.get(0).relativeLocation);
         touchzone.add(edges.get(0).relativeLocation);
         touchzone.add(edges.get(0).relativeLocation);
-/*
-        bordType.add(0);
-        bordType.add(1);
-        bordType.add(1);
-        bordType.add(1);*/
 
         dest.add(new MyPoint(0, 0));
         dest.add(new MyPoint(0, 0));
@@ -98,7 +92,6 @@ public class Room extends MapElement implements Serializable
 @Override
     public  void tick(MyPoint wordloc, int size)
 {
-
 
     relativeLocation = new MyPoint(wordloc.x + location.x, wordloc.y + location.y);
 
@@ -132,20 +125,22 @@ public class Room extends MapElement implements Serializable
 @Override
     public  void render(Graphics g)
 {
-    /*
-    Pen pen = new Pen(Color.Red, 1);
-    g.DrawRectangle(pen,new Rectangle(relativeLocation.x-5, relativeLocation.y - 5, 10, 10));
+
+    g.setColor(Color.WHITE);
+    g.drawRect(relativeLocation.x-5, relativeLocation.y - 5, 10, 10);
     for (int j = 0; j < edges.size() ; j++)
     {
         edges.get(j).render(g);
 
     }
+
+
     for (int j = 0; j < walls.size() ; j++)
     {
         walls.get(j).render(g);
 
     }
-*/
+/*
     g.setColor(Color.red);
     Polygon poly=new Polygon();
     for(int i=0;i<touchzone.size();i++)
@@ -153,14 +148,14 @@ public class Room extends MapElement implements Serializable
         poly.addPoint(touchzone.get(i).x,touchzone.get(i).y);
     }
 
-    g.drawPolygon(poly);
+    g.drawPolygon(poly);*/
 }
 
-/*
-    public override void move(Point coord)
+    @Override
+    public  void move(MyPoint coord)
 {
     relativeLocation = coord;
-    location = new MyPoint(relativeLocation.x - MapCamera.getWorldLoc().x, relativeLocation.y - MapCamera.getWorldLoc().y);
+    location = new MyPoint(relativeLocation.x - MapCamera.relativeworldlocation.x, relativeLocation.y - MapCamera.relativeworldlocation.y);
 
     for (int j = 0; j < edges.size(); j++)
     {
@@ -168,48 +163,45 @@ public class Room extends MapElement implements Serializable
     }
 }
 
-*/
-/*
-    public  bool touchhit(Point coord)
-{
-    return base.touchhit(coord);
-}
-*/
-/*
-    public  void setedgessize()(int size())
-{
-    if (size() == edges.size())
-    { return; }
-    if (size() > edges.size())
-    {
-        for (int i = 0; i < size() - edges.size(); i++)
-        {
-            MapPanel.map.floors[DrawMap.selectedfloor].drawObjects.elements.add(new com.com.pack.diplommapandr.Edge(new MyPoint(edges[edges.size() - 1].location.x - 15, edges[edges.size() - 1].location.y - 15)));
 
-            MapPanel.map.floors[DrawMap.selectedfloor].drawObjects.edges.add(new com.com.pack.diplommapandr.Edge(new MyPoint(edges[edges.size()-1].location.x-10, edges[edges.size() - 1].location.y - 10)));
-            MapPanel.map.floors[DrawMap.selectedfloor].drawObjects.rasst();
-            edges.add(MapPanel.map.floors[DrawMap.selectedfloor].drawObjects.edges[MapPanel.map.floors[DrawMap.selectedfloor].drawObjects.edges.size()-1]);
-            walls.RemoveAt(walls.size()-1);
-            walls.add(new Wall(edges[edges.size()-2], edges[edges.size() - 1]));
-            walls.add(new Wall(edges[edges.size() - 1], edges[0]));
+
+    @Override
+    public boolean touchhit(Point coord) {
+        return super.touchhit(coord);
+    }
+
+
+    public  void setedgessize(int size)
+{
+    if (size == edges.size())
+    {
+
+    }
+    if (size > edges.size())
+    {
+        for (int i = 0; i < size - edges.size(); i++)
+        {
+            State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.elements.add(new Edge(new MyPoint( edges.get(edges.size() - 1).location.x - 15, edges.get( edges.size() - 1).location.y - 15)));
+
+            State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.edges.add(new Edge(new MyPoint( edges.get(edges.size()-1).location.x-10, edges.get( edges.size() - 1).location.y - 10)));
+            State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.rasst();
+            edges.add(State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.edges.get( State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.edges.size()-1));
+            walls.remove(walls.size()-1);
+            walls.add(new Wall(edges.get( edges.size()-2), edges.get( edges.size() - 1)));
+            walls.add(new Wall(edges.get( edges.size() - 1), edges.get( 0)));
 
             dest.add(new MyPoint(0,0));
-            touchzone.add(edges[edges.size()-1].relativeLocation);
-            bordType.add(1);
-
-
+            touchzone.add(edges.get( edges.size()-1).relativeLocation);
         }
     }
-    if (size() < edges.size())
+    if (size < edges.size())
     {
-        for (int i = edges.size() - 1; i > size() - 1; i--)
+        for (int i = edges.size() - 1; i > size - 1; i--)
         {
-            edges.RemoveAt(i);
-            dest.RemoveAt(i);
-            touchzone.RemoveAt(i);
-            bordType.RemoveAt(i);
-
+            edges.remove(i);
+            dest.remove(i);
+            touchzone.remove(i);
         }
     }
-}*/
+}
 }
