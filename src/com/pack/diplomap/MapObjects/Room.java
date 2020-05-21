@@ -94,8 +94,9 @@ public class Room extends MapElement implements Serializable
 @Override
     public  void tick(MyPoint wordloc, int size)
 {
-    relativeLocation = new MyPoint(wordloc.x + location.x, wordloc.y + location.y );
-
+    relativeLocation = new MyPoint((wordloc.x + location.x), (wordloc.y + location.y) );
+   // relativeLocation.x = relativeLocation.x *size;
+  //  relativeLocation.y = relativeLocation.y * size;
     for (int i = 0; i < dest.size(); i++)
     {
         dest.get(i).set(location.x - edges.get(i).location.x, location.y - edges.get(i).location.y);
@@ -122,7 +123,7 @@ public class Room extends MapElement implements Serializable
 
 
 
-    razn=new MyPoint(relativeLocation.x-location.x,relativeLocation.y-location.y);
+ //   razn=new MyPoint(relativeLocation.x-location.x,relativeLocation.y-location.y);
 }
 
 @Override
@@ -160,7 +161,8 @@ public class Room extends MapElement implements Serializable
     public  void move(MyPoint coord)
 {
 
-    location = new MyPoint(coord.x-razn.x, coord.y-razn.y);
+    razn=new MyPoint(coord.x-relativeLocation.x, coord.y-relativeLocation.y);
+    location = new MyPoint(location.x+razn.x, location.y+razn.y);
 
     for (int j = 0; j < edges.size(); j++)
     {

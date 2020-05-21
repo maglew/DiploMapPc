@@ -8,7 +8,7 @@ import java.awt.*;
 public  class MapCamera
 {
 Handler handler;
-    public static int size = 1;
+    public static int size = 15;
     static Rectangle screenRect;
     static Point  razn = new Point(0, 0);
     boolean moved=false;
@@ -48,6 +48,8 @@ Handler handler;
     {
        g.setColor(Color.yellow);
 
+        g.drawString("size: "+size,750,20);
+
         g.drawString("worldloc: "+relativeworldlocation.toString(),750,50);
         g.drawString("cursor: "+MouseManager.mousecoord.toString(),750,65);
 
@@ -66,12 +68,12 @@ Handler handler;
 
 
 
-    public int getZoom() {
+    public int getSize() {
         return size;
     }
 
-    public void setZoom(int zoom) {
-        this.size = zoom;
+    public void setSize(int size) {
+        this.size = size;
     }
 
     public Point getWorldloc() {

@@ -28,6 +28,9 @@ public class MapState extends State
     JButton moveButt;
     JButton zoomInButt;
     JButton zoomOutButt;
+    JButton zeroButt;
+    JButton saveButt;
+    JButton loadButt;
     JComboBox comboBox1;
     JComboBox comboBox2;
 
@@ -44,6 +47,9 @@ public class MapState extends State
         moveButt= new JButton("move");
         zoomInButt= new JButton("zoom IN");
         zoomOutButt= new JButton("zoom OUT");
+        zeroButt= new JButton("zero");
+        saveButt= new JButton("save map");
+        loadButt= new JButton("load map");
         String[] items = {
                 "Room",
                 "Edge",
@@ -71,6 +77,9 @@ public class MapState extends State
         this.add(moveButt);
         this.add(zoomInButt);
         this.add(zoomOutButt);
+        this.add(zeroButt);
+        this.add(saveButt);
+        this.add(loadButt);
         this.add(comboBox1);
         comboBox1.setEditable(true);
         this.add(comboBox2);
@@ -98,7 +107,7 @@ mapInterface=new MapInterface();
     public void tick()
     {
         mapCamera.tick();
-        drawMap.tick(new MyPoint(mapCamera.getWorldloc()),mapCamera.getZoom());
+        drawMap.tick(new MyPoint(mapCamera.getWorldloc()),mapCamera.getSize());
         mapInterface.tick();
     }
 
@@ -132,6 +141,21 @@ mapInterface=new MapInterface();
             }
         });
 
+        zeroButt.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                MapCamera.worldlocation=new Point(0,0);
+            }
+        });
+        saveButt.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+               State.getCurrentState().drawMap.save();
+            }
+        });
+        loadButt.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                State.getCurrentState().drawMap.load();
+            }
+        });
         redButt.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                mapInterface.regime="redact";
@@ -158,13 +182,19 @@ mapInterface=new MapInterface();
 
         zoomInButt.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                mapInterface.regime="zoomIn";
+              //  State.getCurrentState().canvas.
+                if(MapCamera.size>1)
+                    MapCamera.size-=1;
+
             }
         });
 
         zoomOutButt.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                mapInterface.regime="zoomOut";
+
+
+                if(MapCamera.size<15)
+                    MapCamera.size+=1;
             }
         });
 

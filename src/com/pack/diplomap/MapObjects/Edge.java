@@ -59,11 +59,11 @@ public class Edge extends MapElement implements Serializable
         //      relativeLocation = new MyPoint(wordloc.x + location.x, wordloc.y + location.y);
     }
     */
-    //relativeLocation.x = relativeLocation.x * size;
-    //relativeLocation.y = relativeLocation.y * size;
+
 
     relativeLocation = new MyPoint(wordloc.x + location.x, wordloc.y + location.y );
-
+  //  relativeLocation.x = relativeLocation.x * size;
+   // relativeLocation.y = relativeLocation.y * size;
     this.touchzone.get(0).set(relativeLocation.x   - 10,relativeLocation.y   - 10);
     this.touchzone.get(1).set(relativeLocation.x   + 10,relativeLocation.y   - 10);
     this.touchzone.get(2).set(relativeLocation.x   + 10,relativeLocation.y   + 10);
@@ -100,12 +100,7 @@ razn=new MyPoint(relativeLocation.x-location.x,relativeLocation.y-location.y);
 @Override
     public  void move(MyPoint coord)
 {
-    /*
-    this.relativeLocation = coord;
-    this.location = new MyPoint(relativeLocation.x- MapCamera.worldlocation.x, relativeLocation.y - MapCamera.worldlocation.y);
-*/
 
-   // relativeLocation = new MyPoint(coord.x, coord.y );
     location = new MyPoint(coord.x-razn.x, coord.y-razn.y);
 }
 

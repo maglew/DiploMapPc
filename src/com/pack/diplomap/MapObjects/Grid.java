@@ -46,7 +46,7 @@ public class Grid extends MapElement implements Serializable
     relativeLocation = new MyPoint(relLocation.x + location.y, relLocation.y + location.y);
     //  relpoints[0].x = relpoints[0].x * size;
     //  relpoints[0].y = relpoints[0].y * size;
-    templength = length * size;
+  //  templength = length * size;
 
 
 }
