@@ -54,7 +54,7 @@ public class Room extends MapElement implements Serializable
         }
         elemid =++MapElement.numInstances+"R";
     }
-
+/*
     public Room()
     {
 
@@ -90,12 +90,11 @@ public class Room extends MapElement implements Serializable
         }
         elemid =++MapElement.numInstances+"R";
     }
-
+*/
 @Override
     public  void tick(MyPoint wordloc, int size)
 {
-   relativeLocation = new MyPoint(wordloc.x + location.x, wordloc.y + location.y );
-
+    relativeLocation = new MyPoint(wordloc.x + location.x, wordloc.y + location.y );
 
     for (int i = 0; i < dest.size(); i++)
     {
@@ -117,8 +116,10 @@ public class Room extends MapElement implements Serializable
 
     for (int j = 0; j < touchzone.size() ; j++)
     {
-        touchzone.get(j).set(edges.get(j).relativeLocation.x,edges.get(j).relativeLocation.y);
+        touchzone.set(j,new MyPoint( edges.get(j).relativeLocation.x,edges.get(j).relativeLocation.y));
+
     }
+
 
 
     razn=new MyPoint(relativeLocation.x-location.x,relativeLocation.y-location.y);
@@ -137,13 +138,14 @@ public class Room extends MapElement implements Serializable
 
     }
 
-/*
+
     for (int j = 0; j < walls.size() ; j++)
     {
         walls.get(j).render(g);
 
     }
-    */
+
+
     g.setColor(Color.red);
     Polygon poly=new Polygon();
     for(int i=0;i<touchzone.size();i++)
@@ -169,8 +171,10 @@ public class Room extends MapElement implements Serializable
 
 
     @Override
-    public boolean touchhit(Point coord) {
+    public boolean touchhit(Point coord)
+    {
         return super.touchhit(coord);
+
     }
 
 
