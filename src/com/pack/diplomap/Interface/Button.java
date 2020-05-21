@@ -22,7 +22,7 @@ public class Button
 
     public void tick(Handler handler)
     {
-        this.ispressed=false;
+   /*     this.ispressed=false;
         this.iscursed=false;
         if(handler.getMouseManager().left&&handler.getMouseManager().getCursorLoc().x>=borders.x&&handler.getMouseManager().getCursorLoc().x<=borders.x+borders.width
                 &&handler.getMouseManager().getCursorLoc().y>=borders.y&&handler.getMouseManager().getCursorLoc().y<=borders.y+borders.height)
@@ -30,7 +30,7 @@ public class Button
         if(handler.getMouseManager().getCursorLoc().x>=borders.x&&handler.getMouseManager().getCursorLoc().x<=borders.x+borders.width
                 &&handler.getMouseManager().getCursorLoc().y>=borders.y&&handler.getMouseManager().getCursorLoc().y<=borders.y+borders.height)
         {this.iscursed=true;}
-
+*/
     }
 
     public void render(Graphics g)

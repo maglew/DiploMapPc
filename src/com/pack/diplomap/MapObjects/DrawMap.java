@@ -103,9 +103,10 @@ public class DrawMap implements Serializable
         floors.get(0).drawObjects.grids.add(new Grid(10, 10, 50));
 
         floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(100, 100)));
+        floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(200, 100)));
         floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(200, 200)));
         floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(100, 200)));
-        floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(200, 100)));
+
 
 
         floors.get(1).drawObjects.grids.add(new Grid(10, 10, 50));
@@ -114,15 +115,15 @@ public class DrawMap implements Serializable
 
         floors.get(2).drawObjects.grids.add(new Grid(10, 10, 50));
 
+/*
+        floors.get(1).drawObjects.edges.add(new Edge(new MyPoint(300, 100)));
+        floors.get(1).drawObjects.edges.add(new Edge(new MyPoint(400, 100)));
+        floors.get(1).drawObjects.edges.add(new Edge(new MyPoint(400, 200)));
+        floors.get(1).drawObjects.edges.add(new Edge(new MyPoint(300, 200)));
 
-        //floors[2].drawObjects.edges.add(new com.com.pack.diplommapandr.Edge(new MyPoint(100, 100)));
-        //floors[2].drawObjects.edges.add(new com.com.pack.diplommapandr.Edge(new MyPoint(200, 100)));
-        //floors[2].drawObjects.edges.add(new com.com.pack.diplommapandr.Edge(new MyPoint(200, 200)));
-        //floors[2].drawObjects.edges.add(new com.com.pack.diplommapandr.Edge(new MyPoint(100, 200)));
-
-
-        //floors[2].drawObjects.rooms.add(new Room(floors[2].drawObjects.edges[0], floors[2].drawObjects.edges[1],
-        //floors[2].drawObjects.edges[2], floors[2].drawObjects.edges[3]));
+*/
+        floors.get(0).drawObjects.rooms.add(new Room(floors.get(0).drawObjects.edges.get(0), floors.get(0).drawObjects.edges.get(1),
+        floors.get(0).drawObjects.edges.get(2), floors.get(0).drawObjects.edges.get(3)));
 
 
 

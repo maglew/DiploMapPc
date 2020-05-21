@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
 public class MapState extends State
 {
     int i=0;
-MapInterface mapInterface;
+    MapInterface mapInterface;
     JButton exitButt;
 
     JButton redButt;
@@ -30,6 +30,7 @@ MapInterface mapInterface;
     JButton zoomOutButt;
     JComboBox comboBox1;
     JComboBox comboBox2;
+
     public MapState(Handler handler)
     {
 

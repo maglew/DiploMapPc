@@ -13,8 +13,8 @@ public class Edge extends MapElement implements Serializable
     private static final long serialVersionUID = -2515152604847457796L;
 
     MyPoint temp = new MyPoint(0, 0);
+    MyPoint razn = new MyPoint(0, 0);
 
-    byte[] types = { 0, 1, 1, 1 };
     public Edge(MyPoint coord)
     {
         this.movable = true;
@@ -48,6 +48,7 @@ public class Edge extends MapElement implements Serializable
 @Override
     public  void tick(MyPoint wordloc, int size)
 {
+    /*
     if (temp.x != wordloc.x || temp.y != wordloc.y)
     {
         relativeLocation = new MyPoint(wordloc.x + location.x, wordloc.y + location.y );
@@ -57,15 +58,18 @@ public class Edge extends MapElement implements Serializable
     {
         //      relativeLocation = new MyPoint(wordloc.x + location.x, wordloc.y + location.y);
     }
+    */
     //relativeLocation.x = relativeLocation.x * size;
     //relativeLocation.y = relativeLocation.y * size;
+
+    relativeLocation = new MyPoint(wordloc.x + location.x, wordloc.y + location.y );
 
     this.touchzone.get(0).set(relativeLocation.x   - 10,relativeLocation.y   - 10);
     this.touchzone.get(1).set(relativeLocation.x   + 10,relativeLocation.y   - 10);
     this.touchzone.get(2).set(relativeLocation.x   + 10,relativeLocation.y   + 10);
     this.touchzone.get(3).set(relativeLocation.x   - 10,relativeLocation.y   + 10);
 
-
+razn=new MyPoint(relativeLocation.x-location.x,relativeLocation.y-location.y);
 }
 
 @Override
@@ -78,7 +82,8 @@ public class Edge extends MapElement implements Serializable
 
     g.drawRect( relativeLocation.x - width / 4, relativeLocation.y - width / 4, width / 2, width / 2);
 
-
+    g.setColor(Color.blue);
+    g.drawRect( location.x - width / 5, location.y - width / 5, width -6, width -6);
 
     g.setColor(Color.red);
     Polygon poly=new Polygon();
@@ -95,9 +100,13 @@ public class Edge extends MapElement implements Serializable
 @Override
     public  void move(MyPoint coord)
 {
+    /*
     this.relativeLocation = coord;
     this.location = new MyPoint(relativeLocation.x- MapCamera.worldlocation.x, relativeLocation.y - MapCamera.worldlocation.y);
+*/
 
+   // relativeLocation = new MyPoint(coord.x, coord.y );
+    location = new MyPoint(coord.x-razn.x, coord.y-razn.y);
 }
 
 

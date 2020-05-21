@@ -42,21 +42,17 @@ public  class DrawObjects implements Serializable
 
     public void tick(MyPoint worldloc, int size)
     {
-        Iterator<MapElement> itermo=elements.iterator();
-        while(itermo.hasNext())
+        for(MapElement me: elements)
         {
-            MapElement mo=itermo.next();
-            mo.tick(worldloc,size);
+            me.tick(worldloc,size);
         }
     }
 
     public void render(Graphics g)
     {
-        Iterator<MapElement> itermo=elements.iterator();
-        while(itermo.hasNext())
+        for(MapElement me: elements)
         {
-            MapElement mo=itermo.next();
-            mo.render(g);
+            me.render(g);
         }
     }
 

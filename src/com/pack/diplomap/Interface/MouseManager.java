@@ -8,19 +8,18 @@ import java.awt.event.MouseMotionListener;
 public class MouseManager implements MouseListener, MouseMotionListener
 {
 
-    public static boolean entered=false;
-    public static boolean left, mid,right , scrlup,scrldown;
+    static public boolean left =false;
+    static public boolean right = false;
+    static public boolean enter =false;
 
-    public static Point cursorLoc=new Point(0,0);
-
-    public static Point leftDown=new Point(0,0);
-    public static Point righDown=new Point(0,0);
-
-    public static Point leftGrabbed=new Point(0,0);
-    public static Point righGrabbed=new Point(0,0);
-
-    public static Point leftUp=new Point(0,0);
-    public static Point righUp=new Point(0,0);
+    static public Point entercoord = new Point(0, 0);
+    static public Point mousecoord = new Point(0, 0);
+    static public Point rightGrab = new Point(0, 0);
+    static public Point leftGrab = new Point(0, 0);
+    static public Point righttouch = new Point(0, 0);
+    static public Point lefttouch = new Point(0, 0);
+    static public Point rightup = new Point(0, 0);
+    static public Point leftup = new Point(0, 0);
 
 
 
@@ -41,21 +40,21 @@ public class MouseManager implements MouseListener, MouseMotionListener
     @Override
     public void mouseClicked(MouseEvent e)
     {
-        if(e.getButton()==1)
-        {
-            left=true;
-            leftDown=new Point(e.getX(),e.getY());
-            left=false;
-            leftDown=new Point(0,0);
+     //   if(e.getButton()==1)
+     //   {
+        //    left=true;
+        //    lefttouch=new Point(e.getX(),e.getY());
+          //  left=false;
+         //   lefttouch=new Point(0,0);
 
-        }
-        if(e.getButton()==3)
-        {
-            right=true;
-            righDown=new Point(e.getX(),e.getY());
-            right=false;
-            righDown=new Point(0,0);
-        }
+     //   }
+     //   if(e.getButton()==3)
+     //   {
+         //   right=true;
+         //   righttouch=new Point(e.getX(),e.getY());
+          //  right=false;
+         //   righttouch=new Point(0,0);
+       // }
 
     }
 
@@ -67,36 +66,43 @@ public class MouseManager implements MouseListener, MouseMotionListener
         if(e.getButton()==MouseEvent.BUTTON1)
         {
             left = true;
-        leftDown=new Point(e.getX(),e.getY());
+            lefttouch = new Point(e.getX(), e.getY());
         }
         else if(e.getButton()==MouseEvent.BUTTON3)
         {
-            right=true;
-            righDown=new Point(e.getX(),e.getY());
+            right = true;
+            righttouch = new Point(e.getX(), e.getY());
         }
-        else if(e.getButton()==MouseEvent.BUTTON2)
-        mid=true;
+        //else if(e.getButton()==MouseEvent.BUTTON2)
+        //mid=true;
     }
 
     @Override
     public void mouseReleased(MouseEvent e)
     {
         if(e.getButton()==MouseEvent.BUTTON1)
-        {   left=false;
-            leftDown=new Point(0,0);
-            leftGrabbed=new Point(0,0);
-            leftUp=new Point(e.getX(),e.getY());
+        {    left = false;
+            lefttouch = new Point(0, 0);
+            leftup = new Point(e.getX(), e.getY());
 
         }
-        else if(e.getButton()==MouseEvent.BUTTON3)
-        {  right=false;
-            righDown=new Point(0,0);
-            righGrabbed=new Point(0,0);
-            righUp=new Point(e.getX(),e.getY());
+         if(e.getButton()==MouseEvent.BUTTON3)
+        {  right = false;
+            righttouch = new Point(0, 0);
+            rightup=new Point(e.getX(),e.getY());
         }
-        else if(e.getButton()==MouseEvent.BUTTON2)
-            mid=false;
+       // else if(e.getButton()==MouseEvent.BUTTON2)
+        //    mid=false;
+        if (!left)
+        {
 
+            leftGrab = new Point(0, 0);
+        }
+        if (!right)
+        {
+
+            rightGrab = new Point(0, 0);
+        }
 
     }
 
@@ -104,27 +110,27 @@ public class MouseManager implements MouseListener, MouseMotionListener
     public void mouseEntered(MouseEvent e)
     {
 
-        entered=true;
+        enter=true;
     }
 
     @Override
     public void mouseExited(MouseEvent e)
     {
-        entered=false;
+        enter=false;
     }
 
     @Override
     public void mouseDragged(MouseEvent e)
     {
+        mousecoord=new Point(e.getX(),e.getY());
         if(left)
         {
-            leftGrabbed.x=e.getX();
-            leftGrabbed.y=e.getY();
+            leftGrab = mousecoord;
 
         }
-        else if(right)
-        {   righGrabbed.x=e.getX();
-            righGrabbed.y=e.getY();
+        if (right)
+        {
+            rightGrab = mousecoord;
         }
 
 
@@ -133,30 +139,51 @@ public class MouseManager implements MouseListener, MouseMotionListener
     @Override
     public void mouseMoved(MouseEvent e)
     {
-        cursorLoc=new Point(e.getX(),e.getY());
+        mousecoord=new Point(e.getX(),e.getY());
     }
 
 
-
-    public Point getLeftGrabbed() {
-        return leftGrabbed;
+    public static boolean isLeft() {
+        return left;
     }
 
-    public Point getRighGrabbed() {
-        return righGrabbed;
+    public static boolean isRight() {
+        return right;
     }
 
-    public Point getLeftTouchCoord() {
-        return leftDown;
+    public static boolean isEnter() {
+        return enter;
     }
 
-    public Point getRighTouchCoord() {
-        return righDown;
+    public static Point getEntercoord() {
+        return entercoord;
     }
 
-    public Point getCursorLoc() {
-        return cursorLoc;
+    public static Point getMousecoord() {
+        return mousecoord;
     }
 
+    public static Point getRightGrab() {
+        return rightGrab;
+    }
 
+    public static Point getLeftGrab() {
+        return leftGrab;
+    }
+
+    public static Point getRighttouch() {
+        return righttouch;
+    }
+
+    public static Point getLefttouch() {
+        return lefttouch;
+    }
+
+    public static Point getRightup() {
+        return rightup;
+    }
+
+    public static Point getLeftup() {
+        return leftup;
+    }
 }

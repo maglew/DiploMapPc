@@ -12,10 +12,12 @@ import java.util.ArrayList;
 public class Room extends MapElement implements Serializable
 {
     private static final long serialVersionUID = -1315152604847457796L;
+
     public ArrayList<Wall> walls = new ArrayList<>();
     public ArrayList<Edge> edges = new ArrayList<>();
-        public ArrayList<MyPoint> dest = new ArrayList<>();
+    public ArrayList<MyPoint> dest = new ArrayList<>();
 
+    MyPoint razn = new MyPoint(0, 0);
 
     public Room(Edge A, Edge B, Edge C, Edge D)
     {
@@ -73,9 +75,9 @@ public class Room extends MapElement implements Serializable
         walls.add(new Wall(new Edge(new MyPoint(0,0)), new Edge(new MyPoint(0,0))));
 
         touchzone.add(edges.get(0).relativeLocation);
-        touchzone.add(edges.get(0).relativeLocation);
-        touchzone.add(edges.get(0).relativeLocation);
-        touchzone.add(edges.get(0).relativeLocation);
+        touchzone.add(edges.get(1).relativeLocation);
+        touchzone.add(edges.get(2).relativeLocation);
+        touchzone.add(edges.get(3).relativeLocation);
 
         dest.add(new MyPoint(0, 0));
         dest.add(new MyPoint(0, 0));
@@ -92,8 +94,8 @@ public class Room extends MapElement implements Serializable
 @Override
     public  void tick(MyPoint wordloc, int size)
 {
+   relativeLocation = new MyPoint(wordloc.x + location.x, wordloc.y + location.y );
 
-    relativeLocation = new MyPoint(wordloc.x + location.x, wordloc.y + location.y);
 
     for (int i = 0; i < dest.size(); i++)
     {
@@ -102,12 +104,9 @@ public class Room extends MapElement implements Serializable
 
     for (int j = 0; j < edges.size() ; j++)
     {
-        //edges.get(j).location= new MyPoint(center.x + dest.get(j).x, center.y + dest.get(j).y);
-        //edges.get(j).relativeLocation = new MyPoint(wordloc.x + edges.get(j).location.x,  wordloc.y + edges.get(j).location.y);
         edges.get(j).tick(wordloc,size);
 
     }
-
 
 
     for (int j = 0; j < walls.size() ; j++)
@@ -115,11 +114,14 @@ public class Room extends MapElement implements Serializable
         walls.get(j).tick(wordloc, size);
 
     }
+
     for (int j = 0; j < touchzone.size() ; j++)
     {
         touchzone.get(j).set(edges.get(j).relativeLocation.x,edges.get(j).relativeLocation.y);
     }
 
+
+    razn=new MyPoint(relativeLocation.x-location.x,relativeLocation.y-location.y);
 }
 
 @Override
@@ -127,6 +129,7 @@ public class Room extends MapElement implements Serializable
 {
 
     g.setColor(Color.WHITE);
+
     g.drawRect(relativeLocation.x-5, relativeLocation.y - 5, 10, 10);
     for (int j = 0; j < edges.size() ; j++)
     {
@@ -134,13 +137,13 @@ public class Room extends MapElement implements Serializable
 
     }
 
-
+/*
     for (int j = 0; j < walls.size() ; j++)
     {
         walls.get(j).render(g);
 
     }
-/*
+    */
     g.setColor(Color.red);
     Polygon poly=new Polygon();
     for(int i=0;i<touchzone.size();i++)
@@ -148,18 +151,18 @@ public class Room extends MapElement implements Serializable
         poly.addPoint(touchzone.get(i).x,touchzone.get(i).y);
     }
 
-    g.drawPolygon(poly);*/
+    g.drawPolygon(poly);
 }
 
     @Override
     public  void move(MyPoint coord)
 {
-    relativeLocation = coord;
-    location = new MyPoint(relativeLocation.x - MapCamera.relativeworldlocation.x, relativeLocation.y - MapCamera.relativeworldlocation.y);
+
+    location = new MyPoint(coord.x-razn.x, coord.y-razn.y);
 
     for (int j = 0; j < edges.size(); j++)
     {
-        edges.get(j).move(new MyPoint(coord.x-dest.get(j).x, coord.y - dest.get(j).y));
+        edges.get(j).move(new MyPoint(coord.x-dest.get(j).x, coord.y-dest.get(j).y ));
     }
 }
 

@@ -19,6 +19,9 @@ public class MyPoint implements Serializable
         this.y = coord.y;
     }
 
+    public MyPoint get() {
+        return this;
+    }
     public int getX() {
         return x;
     }
@@ -42,6 +45,12 @@ public class MyPoint implements Serializable
     }
 
     public void set(Point coord)
+    {
+        this.x=coord.x;
+        this.y=coord.y;
+    }
+
+    public void set(MyPoint coord)
     {
         this.x=coord.x;
         this.y=coord.y;
