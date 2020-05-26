@@ -12,7 +12,6 @@ public class Grid extends MapElement implements Serializable
 
     int length;
     int templength = 0;
-    public ArrayList<Rectangle> rects = new ArrayList<>();
 
     public Grid(int diagquads,int width)
     {
@@ -21,6 +20,7 @@ public class Grid extends MapElement implements Serializable
         this.diagquads = diagquads;
         location=new MyPoint(0, 0);
         elemid = ++MapElement.numInstances + "G";
+
 
     }
 

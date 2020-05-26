@@ -15,8 +15,6 @@ public class Edge extends MapElement implements Serializable
 {
     private static final long serialVersionUID = -2515152604847457796L;
 
-    MyPoint temp = new MyPoint(0, 0);
-    MyPoint razn = new MyPoint(0, 0);
 
     public Edge(MyPoint coord)
     {

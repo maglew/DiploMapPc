@@ -83,7 +83,6 @@ public class DrawMap implements Serializable
             ObjectOutputStream os = new ObjectOutputStream(fos);
 
             os.writeObject(State.getCurrentState().drawMap);
-            // os.writeObject(TestState1.drawmap.floors);
 
             os.close();
             fos.close();
