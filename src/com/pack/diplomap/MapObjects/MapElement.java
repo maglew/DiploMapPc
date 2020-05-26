@@ -8,66 +8,67 @@ import java.util.ArrayList;
 
 public abstract class MapElement implements Serializable
 {
-        private static final long serialVersionUID = -3515152604847457796L;
-        public String text = "";
+    private static final long serialVersionUID = -3515152604847457796L;
+    public String text = "";
 
-        public ArrayList<MyPoint> touchzone = new ArrayList<>();
-        public boolean deletable = true;
+    public ArrayList<MyPoint> touchzone = new ArrayList<>();
+    public ArrayList<MyPoint> relativetouchzone = new ArrayList<>();
 
-        public MyPoint location = new MyPoint(0, 0);
-        public MyPoint relativeLocation = new MyPoint(0, 0);
+    public boolean deletable = true;
 
-        public int width = 10;
+    public MyPoint location = new MyPoint(0, 0);
 
-        public String elemid;
-        public static int numInstances;
 
-    public int size = 0;
+    public int width = 10;
+
+    public String elemid;
+    public static int numInstances;
+
+    //   public int size = 0;
     //  public int rotation;
     public boolean movable = true;
 
 
-    public  void tick(MyPoint wordloc, int size)
-{
-    this.size = size;
+    public  void tick()
+    {
 
 
-}
+    }
 
     public  void render(Graphics g)
-{
+    {
 
 
 
-}
+    }
 
     public  void move(MyPoint coord)
-{
+    {
 
 
 
-}
+    }
 
 
     public  boolean touchhit(Point coord)
-{
-    boolean inpol = false;
-
-    Polygon poly=new Polygon();
-    for(int i=0;i<touchzone.size();i++)
     {
-        poly.addPoint(touchzone.get(i).x,touchzone.get(i).y);
-    }
-    inpol=poly.contains(coord.x,coord.y);
+        boolean inpol = false;
 
-    return inpol;
-}
+        Polygon poly=new Polygon();
+        for(int i=0;i<touchzone.size();i++)
+        {
+            poly.addPoint(touchzone.get(i).x,touchzone.get(i).y);
+        }
+        inpol=poly.contains(coord.x,coord.y);
+
+        return inpol;
+    }
 
 
 
     public  void setedgescount(int count)
-{
+    {
 
-}
+    }
 
 }

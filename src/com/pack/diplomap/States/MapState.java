@@ -21,7 +21,6 @@ public class MapState extends State
     int i=0;
     MapInterface mapInterface;
     JButton exitButt;
-
     JButton redButt;
     JButton delButt;
     JButton createButt;
@@ -61,7 +60,7 @@ public class MapState extends State
                 "3"
         };
 
-         comboBox1 = new JComboBox(items);
+        comboBox1 = new JComboBox(items);
         comboBox2 = new JComboBox(items2);
 
         canvas=new Canvas();
@@ -90,7 +89,8 @@ public class MapState extends State
     @Override
     void init()
     {
-mapInterface=new MapInterface();
+
+        mapInterface=new MapInterface();
         canvas.addMouseListener(mouseManager);
         canvas.addMouseMotionListener(mouseManager);
 
@@ -99,7 +99,7 @@ mapInterface=new MapInterface();
         drawMap.add();
         thread.start();
 
-    buttlistadd();
+        buttlistadd();
     }
 
 
@@ -107,16 +107,21 @@ mapInterface=new MapInterface();
     public void tick()
     {
         mapCamera.tick();
-        drawMap.tick(new MyPoint(mapCamera.getWorldloc()),mapCamera.getSize());
+
         mapInterface.tick();
+        drawMap.tick();
     }
 
     @Override
     public void render(Graphics g)
     {
         mapCamera.render(g);
-       drawMap.render(g);
-       mapInterface.render(g);
+        g2= (Graphics2D) g;
+        mapInterface.render(g);
+        g2.translate(mapCamera.getWorldloc().x,mapCamera.getWorldloc().y);
+        g2.scale(mapCamera.getSize(),mapCamera.getSize());
+        drawMap.render(g);
+
     }
 
     void buttlistadd()
@@ -148,7 +153,7 @@ mapInterface=new MapInterface();
         });
         saveButt.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-               State.getCurrentState().drawMap.save();
+                State.getCurrentState().drawMap.save();
             }
         });
         loadButt.addActionListener(new ActionListener() {
@@ -158,7 +163,7 @@ mapInterface=new MapInterface();
         });
         redButt.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-               mapInterface.regime="redact";
+                //  mapInterface.regime="redact";
             }
         });
 
@@ -182,19 +187,18 @@ mapInterface=new MapInterface();
 
         zoomInButt.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-              //  State.getCurrentState().canvas.
-                if(MapCamera.size>1)
-                    MapCamera.size-=1;
-
+                //  State.getCurrentState().canvas.
+                if(MapCamera.size<15)
+                    MapCamera.size*=2;
             }
         });
 
         zoomOutButt.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
+                if(MapCamera.size>0)
+                    MapCamera.size/=2;
 
 
-                if(MapCamera.size<15)
-                    MapCamera.size+=1;
             }
         });
 
@@ -206,6 +210,4 @@ mapInterface=new MapInterface();
         });
 
     }
-
-
 }

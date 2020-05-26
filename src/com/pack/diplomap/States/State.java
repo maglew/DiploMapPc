@@ -10,16 +10,17 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public abstract class State extends JPanel {
-
+public abstract class State extends JPanel
+{
 	public  int exception=0;
-	public  Logs log;
-	public  MainThread thread;
-	public  DrawMap drawMap;
+	public Logs log;
+	public MainThread thread;
+	public DrawMap drawMap;
 	public Canvas canvas;
 	public MapCamera mapCamera;
 	public MouseManager mouseManager;
 
+	public Graphics2D g2;
 
 	public State()
 	{
@@ -65,4 +66,6 @@ public abstract class State extends JPanel {
 	public  void setDrawMap(DrawMap drawMap) {
 		this.drawMap=drawMap;
 	}
+
+
 }

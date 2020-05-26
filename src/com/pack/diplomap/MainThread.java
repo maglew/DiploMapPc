@@ -40,7 +40,8 @@ public class MainThread implements Runnable
 
     }
 
-    private void render(){
+    private void render()
+    {
         bs =State.getCurrentState().canvas.getBufferStrategy();
         if(bs == null){
             State.getCurrentState().canvas.createBufferStrategy(3);
@@ -51,6 +52,7 @@ public class MainThread implements Runnable
         g.clearRect(0, 0, State.getCurrentState().canvas.getWidth(), State.getCurrentState().canvas.getHeight());
         //Draw Here!
         g.setColor(Color.black);
+        //State.getCurrentState().canvas.scale(scale,scale,focusx,focusy);
         g.fillRect(0,0,State.getCurrentState().canvas.getWidth(), State.getCurrentState().canvas.getHeight());
         State.getCurrentState().render(g);
 

@@ -18,14 +18,14 @@ public class Wall extends MapElement implements Serializable
         this.A = A;
         this.B = B;
         id++;
-        dest = new MyPoint(Math.abs(B.relativeLocation.x - A.relativeLocation.x), Math.abs(B.relativeLocation.y - A.relativeLocation.y));
+        dest = new MyPoint(Math.abs(B.location.x - A.location.x), Math.abs(B.location.y - A.location.y));
 
-        touchzone.add(new MyPoint(A.relativeLocation.x + 3, A.relativeLocation.y - 3));
-        touchzone.add(new MyPoint(B.relativeLocation.x + 3, B.relativeLocation.y - 3));
-        touchzone.add(new MyPoint(B.relativeLocation.x - 3, B.relativeLocation.y + 3));
-        touchzone.add(new MyPoint(A.relativeLocation.x - 3, A.relativeLocation.y + 3));
+        touchzone.add(new MyPoint(A.location.x + 3, A.location.y - 3));
+        touchzone.add(new MyPoint(B.location.x + 3, B.location.y - 3));
+        touchzone.add(new MyPoint(B.location.x - 3, B.location.y + 3));
+        touchzone.add(new MyPoint(A.location.x - 3, A.location.y + 3));
 
-elemid =++MapElement.numInstances+"W";
+        elemid =++MapElement.numInstances+"W";
     }
 
     public Wall()
@@ -34,48 +34,48 @@ elemid =++MapElement.numInstances+"W";
         this.A = new Edge(new MyPoint(0,0));
         this.B = new Edge(new MyPoint(0,0));
         id++;
-        dest = new MyPoint(Math.abs(B.relativeLocation.x - A.relativeLocation.x), Math.abs(B.relativeLocation.y - A.relativeLocation.y));
+        dest = new MyPoint(Math.abs(B.location.x - A.location.x), Math.abs(B.location.y - A.location.y));
 
-        touchzone.add(new MyPoint(A.relativeLocation.x + 3, A.relativeLocation.y - 3));
-        touchzone.add(new MyPoint(B.relativeLocation.x + 3, B.relativeLocation.y - 3));
-        touchzone.add(new MyPoint(B.relativeLocation.x - 3, B.relativeLocation.y + 3));
-        touchzone.add(new MyPoint(A.relativeLocation.x - 3, A.relativeLocation.y + 3));
+        touchzone.add(new MyPoint(A.location.x + 3, A.location.y - 3));
+        touchzone.add(new MyPoint(B.location.x + 3, B.location.y - 3));
+        touchzone.add(new MyPoint(B.location.x - 3, B.location.y + 3));
+        touchzone.add(new MyPoint(A.location.x - 3, A.location.y + 3));
 
         elemid =++MapElement.numInstances+"W";
     }
 
-@Override
-    public  void tick(MyPoint relativeLocation, int size)
-{
-
-    dest = new MyPoint(Math.abs(B.relativeLocation.x - A.relativeLocation.x), Math.abs(B.relativeLocation.y - A.relativeLocation.y));
-    A.tick(relativeLocation, size);
-    B.tick(relativeLocation, size);
-    touchzone.get(0).set(A.relativeLocation.x + 3, A.relativeLocation.y - 3);
-    touchzone.get(1).set(A.relativeLocation.x + 3, A.relativeLocation.y - 3);
-    touchzone.get(2).set(A.relativeLocation.x - 3, A.relativeLocation.y + 3);
-    touchzone.get(3).set(A.relativeLocation.x -3, A.relativeLocation.y + 3);
-
-}
-
-@Override
-    public  void render(Graphics g)
-{
-    g.setColor(Color.GREEN);
-
-
-    g.drawLine(A.relativeLocation.x,A.relativeLocation.y,B.relativeLocation.x,B.relativeLocation.y);
-
-
-    g.setColor(Color.blue);
-    Polygon poly=new Polygon();
-    for(int i=0;i<touchzone.size();i++)
+    @Override
+    public  void tick()
     {
-        poly.addPoint(touchzone.get(i).x,touchzone.get(i).y);
+
+        dest = new MyPoint(Math.abs(B.location.x - A.location.x), Math.abs(B.location.y - A.location.y));
+        A.tick();
+        B.tick();
+        touchzone.get(0).set(A.location.x + 3, A.location.y - 3);
+        touchzone.get(1).set(A.location.x + 3, A.location.y - 3);
+        touchzone.get(2).set(A.location.x - 3, A.location.y + 3);
+        touchzone.get(3).set(A.location.x -3, A.location.y + 3);
+
     }
 
-    g.drawPolygon(poly);
-}
+    @Override
+    public  void render(Graphics g)
+    {
+        g.setColor(Color.GREEN);
+
+
+        g.drawLine(A.location.x,A.location.y,B.location.x,B.location.y);
+
+
+        g.setColor(Color.blue);
+        Polygon poly=new Polygon();
+        for(int i=0;i<touchzone.size();i++)
+        {
+            poly.addPoint(touchzone.get(i).x,touchzone.get(i).y);
+        }
+
+        g.drawPolygon(poly);
+    }
 
 
 
@@ -90,3 +90,4 @@ elemid =++MapElement.numInstances+"W";
     }
 
 }
+

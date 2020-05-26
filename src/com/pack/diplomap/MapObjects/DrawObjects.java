@@ -40,11 +40,11 @@ public  class DrawObjects implements Serializable
     }
 
 
-    public void tick(MyPoint worldloc, int size)
+    public void tick()
     {
         for(MapElement me: elements)
         {
-            me.tick(worldloc,size);
+            me.tick();
         }
     }
 
@@ -65,22 +65,22 @@ public  class DrawObjects implements Serializable
 
     }
 
-        public  int searchObjByCoord(Point touchcoord)
+    public  int searchObjByCoord(Point touchcoord)
+    {
+        int i = 0;
+
+
+        for ( MapElement mo : elements)
         {
-            int i = 0;
-
-
-            for ( MapElement mo : elements)
+            if (mo.touchhit(touchcoord) && mo.deletable)
             {
-                if (mo.touchhit(touchcoord) && mo.deletable)
-                {
-                    return i;
-                }
-                i++;
+                return i;
             }
-
-            return -1;
+            i++;
         }
+
+        return -1;
+    }
 
 
     public  MapElement getElement(int id)

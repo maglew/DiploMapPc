@@ -22,9 +22,9 @@ public class DrawMap implements Serializable
 
     }
 
-    public void tick(MyPoint wordloc, int size)
+    public void tick()
     {
-        floors.get(selectedfloor).tick(wordloc, size);
+        floors.get(selectedfloor).tick();
     }
 
     public void render(Graphics g)
@@ -45,18 +45,18 @@ public class DrawMap implements Serializable
                 State.getCurrentState().log.addtolog("no file");
             }
             //FileInputStream fis = new FileInputStream(myfile);
-           // ObjectInputStream is = new ObjectInputStream(fis);
+            // ObjectInputStream is = new ObjectInputStream(fis);
 
             FileInputStream fis = new FileInputStream(myfile);
             DataInputStream dis=new DataInputStream(fis);
             ObjectInputStream is = new ObjectInputStream(dis);
 
-               newmap=(DrawMap)is.readObject();
+            newmap=(DrawMap)is.readObject();
 
             is.close();
             fis.close();
 
-                State.getCurrentState().drawMap=newmap;
+            State.getCurrentState().drawMap=newmap;
 
         }
         catch (Throwable t)
@@ -75,7 +75,7 @@ public class DrawMap implements Serializable
         try {
 
             File myfile = new File("C://Users//whins//Desktop" , "DiplomapPc.dat");
-            
+
             if (myfile.exists ())
                 myfile.delete ();
 
@@ -83,7 +83,7 @@ public class DrawMap implements Serializable
             ObjectOutputStream os = new ObjectOutputStream(fos);
 
             os.writeObject(State.getCurrentState().drawMap);
-           // os.writeObject(TestState1.drawmap.floors);
+            // os.writeObject(TestState1.drawmap.floors);
 
             os.close();
             fos.close();
@@ -100,7 +100,7 @@ public class DrawMap implements Serializable
     public  void add()
     {
 
-        floors.get(0).drawObjects.grids.add(new Grid(10, 10, 50));
+        floors.get(0).drawObjects.grids.add(new Grid(10, 100));
 
         floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(100, 100)));
         floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(200, 100)));
@@ -109,11 +109,11 @@ public class DrawMap implements Serializable
 
 
 
-        floors.get(1).drawObjects.grids.add(new Grid(10, 10, 50));
+        floors.get(1).drawObjects.grids.add(new Grid(10, 100));
 
 
 
-        floors.get(2).drawObjects.grids.add(new Grid(10, 10, 50));
+        floors.get(2).drawObjects.grids.add(new Grid(10, 100));
 
 /*
         floors.get(1).drawObjects.edges.add(new Edge(new MyPoint(300, 100)));
@@ -123,7 +123,7 @@ public class DrawMap implements Serializable
 
 */
         floors.get(0).drawObjects.rooms.add(new Room(floors.get(0).drawObjects.edges.get(0), floors.get(0).drawObjects.edges.get(1),
-        floors.get(0).drawObjects.edges.get(2), floors.get(0).drawObjects.edges.get(3)));
+                floors.get(0).drawObjects.edges.get(2), floors.get(0).drawObjects.edges.get(3)));
 
 
 
@@ -139,3 +139,4 @@ public class DrawMap implements Serializable
     }
 
 }
+
