@@ -106,6 +106,8 @@ public class DrawMap implements Serializable
         floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(200, 200)));
         floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(100, 200)));
 
+        floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(300, 300)));
+        floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(500, 500)));
 
 
         floors.get(1).drawObjects.grids.add(new Grid(10, 100));

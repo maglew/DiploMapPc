@@ -60,8 +60,7 @@ public class MapInterface
                 }
                 if (typeObj == "Wall" && MouseManager.left && schot == 0)
                 {
-
-                    if (chosedObjId!=-1&& State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.getElement(chosedObjId).equals(Edge.class) )
+                    if (chosedObjId!=-1&& State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.getElement(chosedObjId) instanceof Edge )
                     {
                         if (A == -1)
                         { A = chosedObjId;
@@ -152,12 +151,8 @@ public class MapInterface
 
                     if (chosedObjId != -1 && MouseManager.left&&MouseManager.relleftGrab.x!=0&&MouseManager.relleftGrab.y!=0)
                     {
-                        //    State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.moveElement(chosedObjId, new MyPoint((MouseManager.leftGrab.x-State.getCurrentState().mapCamera.getWorldloc().x ), (MouseManager.leftGrab.y-State.getCurrentState().mapCamera.getWorldloc().y)));
                         State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.moveElement(chosedObjId, new MyPoint((MouseManager.relleftGrab.x), (MouseManager.relleftGrab.y)));
-
                     }
-
-
                 }
                 if (!MouseManager.left && dragged)
                 {
@@ -171,13 +166,11 @@ public class MapInterface
     public void render(Graphics g)
     {
         g.setColor(Color.red);
-
         g.drawString(regime,650,100);
         g.drawString(typeObj+"",650,90);
         g.drawString("relmouse:"+MouseManager.getRelmousecoord().x+"."+MouseManager.getRelmousecoord().y,650,120);
         g.drawString("temobjid:"+tempchosedObjId,650,110);
         g.drawString("chosedobj:"+chosedObjId+"",650,130);
-        //   g.drawString("cursrect:"+cursorRect.x+"."+cursorRect.y,650,130);
     }
 
 }
