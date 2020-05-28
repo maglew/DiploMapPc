@@ -20,21 +20,16 @@ public class Grid extends MapElement implements Serializable
         this.diagquads = diagquads;
         location=new MyPoint(0, 0);
         elemid = ++MapElement.numInstances + "G";
-
-
     }
 
     public Grid()
     {
-
         this.deletable = false;
         this.width = 100;
         this.diagquads = 10;
         this.length = 50;
         location=new MyPoint(0, 0);
-
         elemid = ++MapElement.numInstances + "G";
-
     }
 
     @Override
@@ -46,9 +41,7 @@ public class Grid extends MapElement implements Serializable
     @Override
     public  void render(Graphics g)
     {
-
         g.setColor(Color.white);
-
         for(int i=0;i<=diagquads;i++)
         {
             for(int j=0;j<=diagquads;j++)
@@ -56,8 +49,6 @@ public class Grid extends MapElement implements Serializable
                 g.drawRect(location.x+width*j,location.y+width *i,width,width);
             }
         }
-
-
     }
 
 /*

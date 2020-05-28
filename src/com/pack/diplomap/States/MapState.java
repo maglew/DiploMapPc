@@ -147,8 +147,9 @@ public class MapState extends State
         });
 
         zeroButt.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                MapCamera.worldlocation=new Point(0,0);
+            public void actionPerformed(ActionEvent event)
+            {
+               State.getCurrentState().mapCamera.worldlocation.setLocation(new Point(0,0));
             }
         });
         saveButt.addActionListener(new ActionListener() {

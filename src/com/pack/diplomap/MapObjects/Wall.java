@@ -1,8 +1,12 @@
 package com.pack.diplomap.MapObjects;
 
 
+import com.pack.diplomap.States.State;
+
 import java.awt.*;
 import java.io.Serializable;
+
+import static java.lang.Math.round;
 
 public class Wall extends MapElement implements Serializable
 {
@@ -24,6 +28,7 @@ public class Wall extends MapElement implements Serializable
         touchzone.add(new MyPoint(B.location.x + 3, B.location.y - 3));
         touchzone.add(new MyPoint(B.location.x - 3, B.location.y + 3));
         touchzone.add(new MyPoint(A.location.x - 3, A.location.y + 3));
+        relativetouchzone=touchzone;
 
         elemid =++MapElement.numInstances+"W";
     }
@@ -35,26 +40,29 @@ public class Wall extends MapElement implements Serializable
         this.B = new Edge(new MyPoint(0,0));
         id++;
         dest = new MyPoint(Math.abs(B.location.x - A.location.x), Math.abs(B.location.y - A.location.y));
-
         touchzone.add(new MyPoint(A.location.x + 3, A.location.y - 3));
         touchzone.add(new MyPoint(B.location.x + 3, B.location.y - 3));
         touchzone.add(new MyPoint(B.location.x - 3, B.location.y + 3));
         touchzone.add(new MyPoint(A.location.x - 3, A.location.y + 3));
-
+        relativetouchzone=touchzone;
         elemid =++MapElement.numInstances+"W";
     }
 
     @Override
     public  void tick()
     {
-
         dest = new MyPoint(Math.abs(B.location.x - A.location.x), Math.abs(B.location.y - A.location.y));
         A.tick();
         B.tick();
-        touchzone.get(0).set(A.location.x + 3, A.location.y - 3);
-        touchzone.get(1).set(A.location.x + 3, A.location.y - 3);
-        touchzone.get(2).set(A.location.x - 3, A.location.y + 3);
-        touchzone.get(3).set(A.location.x -3, A.location.y + 3);
+        relativetouchzone.set(0,new MyPoint( A.location.x + 3, A.location.y - 3));
+        relativetouchzone.set(1,new MyPoint( B.location.x + 3, B.location.y - 3));
+        relativetouchzone.set(2,new MyPoint( B.location.x - 3, B.location.y + 3));
+        relativetouchzone.set(3,new MyPoint( A.location.x - 3, A.location.y + 3));
+
+        for(int i=0;i<relativetouchzone.size();i++)
+        {
+            touchzone.set(i,new MyPoint((relativetouchzone.get(i).x)*round(State.getCurrentState().mapCamera.getSize()),(relativetouchzone.get(i).y)*round(State.getCurrentState().mapCamera.getSize())) );
+        }
 
     }
 
@@ -69,15 +77,14 @@ public class Wall extends MapElement implements Serializable
 
         g.setColor(Color.blue);
         Polygon poly=new Polygon();
-        for(int i=0;i<touchzone.size();i++)
+        for(int i=0;i<relativetouchzone.size();i++)
         {
-            poly.addPoint(touchzone.get(i).x,touchzone.get(i).y);
+            poly.addPoint(relativetouchzone.get(i).x/round(State.getCurrentState().mapCamera.getSize()),relativetouchzone.get(i).y/round(State.getCurrentState().mapCamera.getSize()));
+
         }
 
         g.drawPolygon(poly);
     }
-
-
 
     public int getId()
     {
@@ -88,6 +95,10 @@ public class Wall extends MapElement implements Serializable
     {
         this.id = id;
     }
-
+    @Override
+    public boolean touchhit(Point coord)
+    {
+        return super.touchhit(coord);
+    }
 }
 

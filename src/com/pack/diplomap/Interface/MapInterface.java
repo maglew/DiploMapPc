@@ -22,6 +22,7 @@ public class MapInterface
     public static boolean dragged = false;
 
     MyPoint pointOfTouch = new MyPoint(0, 0);
+
     MyPoint razn = new MyPoint(0, 0);
     Rectangle cursorRect=new Rectangle(pointOfTouch.x,pointOfTouch.y,40,40);
 
@@ -39,17 +40,13 @@ public class MapInterface
         switch (regime)
         {
             case "delete":
-
+                typeObj = "";
                 if (MouseManager.left)
-                {   typeObj = "";
-
-                    State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.delobj(State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.searchObjByCoord(new Point((int)MouseManager.lefttouch.x, (int)MouseManager.lefttouch.y)));
-                    chosedObjId = State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.searchObjByCoord(new Point((MouseManager.getMousecoord().x-State.getCurrentState().mapCamera.getWorldloc().x), MouseManager.getMousecoord().y-State.getCurrentState().mapCamera.getWorldloc().y));
-                    typeObj = "";
+                {
+                    State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.delobj(chosedObjId);
                 }
                 break;
             case "create":
-                //razn = new MyPoint(0, 0);
 
                 if (typeObj == "Edge" && MouseManager.left && schot == 0)
                 {
