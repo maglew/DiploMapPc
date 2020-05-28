@@ -43,7 +43,6 @@ public class Room extends MapElement implements Serializable
         touchzone.add(edges.get(1).location);
         touchzone.add(edges.get(2).location);
         touchzone.add(edges.get(3).location);
-        relativetouchzone=touchzone;
 
         dest.add(new MyPoint(0, 0));
         dest.add(new MyPoint(0, 0));
@@ -80,7 +79,6 @@ public class Room extends MapElement implements Serializable
         touchzone.add(edges.get(1).location);
         touchzone.add(edges.get(2).location);
         touchzone.add(edges.get(3).location);
-        relativetouchzone=touchzone;
         dest.add(new MyPoint(0, 0));
         dest.add(new MyPoint(0, 0));
         dest.add(new MyPoint(0, 0));
@@ -115,16 +113,12 @@ public class Room extends MapElement implements Serializable
 
         }
 
-        for (int j = 0; j < relativetouchzone.size() ; j++)
+        for (int j = 0; j < touchzone.size() ; j++)
         {
-            relativetouchzone.set(j,new MyPoint( edges.get(j).location.x,edges.get(j).location.y));
+            touchzone.set(j,new MyPoint( edges.get(j).location.x,edges.get(j).location.y));
         }
 
-        for(int i=0;i<touchzone.size();i++)
-        {
-            touchzone.set(i,new MyPoint((relativetouchzone.get(i).x)*round(State.getCurrentState().mapCamera.getSize()),(relativetouchzone.get(i).y)*round(State.getCurrentState().mapCamera.getSize())) );
 
-        }
     }
 
     @Override
@@ -142,14 +136,13 @@ public class Room extends MapElement implements Serializable
         for (int j = 0; j < walls.size() ; j++)
         {
             walls.get(j).render(g);
-
         }
 
         g.setColor(Color.red);
         Polygon poly=new Polygon();
-        for(int i=0;i<relativetouchzone.size();i++)
+        for(int i=0;i<touchzone.size();i++)
         {
-            poly.addPoint(relativetouchzone.get(i).x/round(State.getCurrentState().mapCamera.getSize()),relativetouchzone.get(i).y/round(State.getCurrentState().mapCamera.getSize()));
+            poly.addPoint(touchzone.get(i).x,touchzone.get(i).y);
         }
 
         g.drawPolygon(poly);

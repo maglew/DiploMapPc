@@ -12,7 +12,6 @@ public abstract class MapElement implements Serializable
     public String text = "";
 
     public ArrayList<MyPoint> touchzone = new ArrayList<>();
-    public ArrayList<MyPoint> relativetouchzone = new ArrayList<>();
 
     public boolean deletable = true;
 

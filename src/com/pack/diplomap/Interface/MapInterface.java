@@ -35,7 +35,7 @@ public class MapInterface
 
     public void tick()
     {
-        chosedObjId = State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.searchObjByCoord(new Point((MouseManager.getMousecoord().x-State.getCurrentState().mapCamera.getWorldloc().x), MouseManager.getMousecoord().y-State.getCurrentState().mapCamera.getWorldloc().y));
+          chosedObjId = State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.searchObjByCoord(new Point((MouseManager.getRelmousecoord().x), MouseManager.getRelmousecoord().y));
 
         switch (regime)
         {
@@ -50,18 +50,17 @@ public class MapInterface
 
                 if (typeObj == "Edge" && MouseManager.left && schot == 0)
                 {
-                    State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.addNewEdge(new MyPoint((MouseManager.lefttouch.x - MapCamera.relativeworldlocation.x), (MouseManager.lefttouch.y - MapCamera.relativeworldlocation.y)));
+                    State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.addNewEdge(new MyPoint((MouseManager.rellefttouch.x ), (MouseManager.rellefttouch.y )));
                     schot++;
                 }
                 if (typeObj == "Room" && MouseManager.left && schot == 0)
                 {
-                    State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.addNewRoom(new Point((int)(MouseManager.lefttouch.x - MapCamera.relativeworldlocation.x), (int)(MouseManager.lefttouch.y - MapCamera.relativeworldlocation.y)));
+                    State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.addNewRoom(new MyPoint((MouseManager.rellefttouch.x ), (MouseManager.rellefttouch.y )));
                     schot++;
                 }
                 if (typeObj == "Wall" && MouseManager.left && schot == 0)
                 {
 
-                    chosedObjId = State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.searchObjByCoord(new Point((int)MouseManager.lefttouch.x, (int)MouseManager.lefttouch.y));
                     if (chosedObjId!=-1&& State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.getElement(chosedObjId).equals(Edge.class) )
                     {
                         if (A == -1)
@@ -147,15 +146,14 @@ public class MapInterface
                 {
                     if (!dragged)
                     {
-                        chosedObjId = State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.searchObjByCoord(new Point((MouseManager.lefttouch.x-State.getCurrentState().mapCamera.getWorldloc().x), MouseManager.lefttouch.y-State.getCurrentState().mapCamera.getWorldloc().y));
                         dragged = true;
 
                     }
 
-                    if (chosedObjId != -1 && MouseManager.left&&MouseManager.leftGrab.x!=0&&MouseManager.leftGrab.y!=0)
+                    if (chosedObjId != -1 && MouseManager.left&&MouseManager.relleftGrab.x!=0&&MouseManager.relleftGrab.y!=0)
                     {
                         //    State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.moveElement(chosedObjId, new MyPoint((MouseManager.leftGrab.x-State.getCurrentState().mapCamera.getWorldloc().x ), (MouseManager.leftGrab.y-State.getCurrentState().mapCamera.getWorldloc().y)));
-                        State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.moveElement(chosedObjId, new MyPoint((MouseManager.leftGrab.x-State.getCurrentState().mapCamera.getWorldloc().x )/(round(State.getCurrentState().mapCamera.getSize())), (MouseManager.leftGrab.y-State.getCurrentState().mapCamera.getWorldloc().y)/(round(State.getCurrentState().mapCamera.getSize()))));
+                        State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.moveElement(chosedObjId, new MyPoint((MouseManager.relleftGrab.x), (MouseManager.relleftGrab.y)));
 
                     }
 
@@ -176,7 +174,7 @@ public class MapInterface
 
         g.drawString(regime,650,100);
         g.drawString(typeObj+"",650,90);
-        g.drawString("pointOfTouch:"+pointOfTouch.x+"."+pointOfTouch.y,650,120);
+        g.drawString("relmouse:"+MouseManager.getRelmousecoord().x+"."+MouseManager.getRelmousecoord().y,650,120);
         g.drawString("temobjid:"+tempchosedObjId,650,110);
         g.drawString("chosedobj:"+chosedObjId+"",650,130);
         //   g.drawString("cursrect:"+cursorRect.x+"."+cursorRect.y,650,130);

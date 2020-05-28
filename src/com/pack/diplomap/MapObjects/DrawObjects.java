@@ -116,7 +116,7 @@ public  class DrawObjects implements Serializable
     }
 
 
-    public void addNewRoom(Point coord)
+    public void addNewRoom(MyPoint coord)
     {
 
         edges.add(new Edge(new MyPoint(coord.x - 50, coord.y - 50)));

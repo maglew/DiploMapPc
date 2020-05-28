@@ -1,9 +1,13 @@
 package com.pack.diplomap.Interface;
 
+import com.pack.diplomap.States.State;
+
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+
+import static java.lang.Math.round;
 
 public class MouseManager implements MouseListener, MouseMotionListener
 {
@@ -21,7 +25,13 @@ public class MouseManager implements MouseListener, MouseMotionListener
     static public Point rightup = new Point(0, 0);
     static public Point leftup = new Point(0, 0);
 
-
+    static public Point relmousecoord = new Point(0, 0);
+    static public Point relrightGrab = new Point(0, 0);
+    static public Point relleftGrab = new Point(0, 0);
+    static public Point relrighttouch = new Point(0, 0);
+    static public Point rellefttouch = new Point(0, 0);
+    static public Point relrightup = new Point(0, 0);
+    static public Point relleftup = new Point(0, 0);
 
 
     public MouseManager()
@@ -67,11 +77,15 @@ public class MouseManager implements MouseListener, MouseMotionListener
         {
             left = true;
             lefttouch = new Point(e.getX(), e.getY());
+            rellefttouch =new Point((e.getX()- State.getCurrentState().mapCamera.getWorldloc().x)/round(State.getCurrentState().mapCamera.getSize()), (e.getY()-State.getCurrentState().mapCamera.getWorldloc().y)/round(State.getCurrentState().mapCamera.getSize()));
+
         }
         else if(e.getButton()==MouseEvent.BUTTON3)
         {
             right = true;
             righttouch = new Point(e.getX(), e.getY());
+            relrighttouch =new Point((e.getX()- State.getCurrentState().mapCamera.getWorldloc().x)/round(State.getCurrentState().mapCamera.getSize()), (e.getY()-State.getCurrentState().mapCamera.getWorldloc().y)/round(State.getCurrentState().mapCamera.getSize()));
+
         }
         //else if(e.getButton()==MouseEvent.BUTTON2)
         //mid=true;
@@ -84,24 +98,28 @@ public class MouseManager implements MouseListener, MouseMotionListener
         {    left = false;
             lefttouch = new Point(0, 0);
             leftup = new Point(e.getX(), e.getY());
-
+            rellefttouch= new Point(0, 0);
+            relleftup =new Point((e.getX()- State.getCurrentState().mapCamera.getWorldloc().x)/round(State.getCurrentState().mapCamera.getSize()), (e.getY()-State.getCurrentState().mapCamera.getWorldloc().y)/round(State.getCurrentState().mapCamera.getSize()));
         }
          if(e.getButton()==MouseEvent.BUTTON3)
         {  right = false;
             righttouch = new Point(0, 0);
             rightup=new Point(e.getX(),e.getY());
+            relrighttouch= new Point(0, 0);
+            relrightup =new Point((e.getX()- State.getCurrentState().mapCamera.getWorldloc().x)/round(State.getCurrentState().mapCamera.getSize()), (e.getY()-State.getCurrentState().mapCamera.getWorldloc().y)/round(State.getCurrentState().mapCamera.getSize()));
         }
        // else if(e.getButton()==MouseEvent.BUTTON2)
         //    mid=false;
         if (!left)
         {
-
             leftGrab = new Point(0, 0);
+            relleftGrab=new Point(0, 0);
         }
         if (!right)
         {
 
             rightGrab = new Point(0, 0);
+            relleftGrab=new Point(0, 0);
         }
 
     }
@@ -123,14 +141,17 @@ public class MouseManager implements MouseListener, MouseMotionListener
     public void mouseDragged(MouseEvent e)
     {
         mousecoord=new Point(e.getX(),e.getY());
+        relmousecoord=new Point((e.getX()- State.getCurrentState().mapCamera.getWorldloc().x)/round(State.getCurrentState().mapCamera.getSize()), (e.getY()-State.getCurrentState().mapCamera.getWorldloc().y)/round(State.getCurrentState().mapCamera.getSize()));
         if(left)
         {
             leftGrab = mousecoord;
+            relleftGrab=relmousecoord;
 
         }
         if (right)
         {
             rightGrab = mousecoord;
+            relrightGrab=relmousecoord;
         }
 
 
@@ -140,6 +161,7 @@ public class MouseManager implements MouseListener, MouseMotionListener
     public void mouseMoved(MouseEvent e)
     {
         mousecoord=new Point(e.getX(),e.getY());
+        relmousecoord=new Point((e.getX()- State.getCurrentState().mapCamera.getWorldloc().x)/round(State.getCurrentState().mapCamera.getSize()), (e.getY()-State.getCurrentState().mapCamera.getWorldloc().y)/round(State.getCurrentState().mapCamera.getSize()));
     }
 
 
@@ -185,5 +207,34 @@ public class MouseManager implements MouseListener, MouseMotionListener
 
     public static Point getLeftup() {
         return leftup;
+    }
+
+
+    public static Point getRelmousecoord() {
+        return relmousecoord;
+    }
+
+    public static Point getRelrightGrab() {
+        return relrightGrab;
+    }
+
+    public static Point getRelleftGrab() {
+        return relleftGrab;
+    }
+
+    public static Point getRelrighttouch() {
+        return relrighttouch;
+    }
+
+    public static Point getRellefttouch() {
+        return rellefttouch;
+    }
+
+    public static Point getRelrightup() {
+        return relrightup;
+    }
+
+    public static Point getRelleftup() {
+        return relleftup;
     }
 }

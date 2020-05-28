@@ -28,8 +28,6 @@ public class Wall extends MapElement implements Serializable
         touchzone.add(new MyPoint(B.location.x + 3, B.location.y - 3));
         touchzone.add(new MyPoint(B.location.x - 3, B.location.y + 3));
         touchzone.add(new MyPoint(A.location.x - 3, A.location.y + 3));
-        relativetouchzone=touchzone;
-
         elemid =++MapElement.numInstances+"W";
     }
 
@@ -44,7 +42,6 @@ public class Wall extends MapElement implements Serializable
         touchzone.add(new MyPoint(B.location.x + 3, B.location.y - 3));
         touchzone.add(new MyPoint(B.location.x - 3, B.location.y + 3));
         touchzone.add(new MyPoint(A.location.x - 3, A.location.y + 3));
-        relativetouchzone=touchzone;
         elemid =++MapElement.numInstances+"W";
     }
 
@@ -54,15 +51,12 @@ public class Wall extends MapElement implements Serializable
         dest = new MyPoint(Math.abs(B.location.x - A.location.x), Math.abs(B.location.y - A.location.y));
         A.tick();
         B.tick();
-        relativetouchzone.set(0,new MyPoint( A.location.x + 3, A.location.y - 3));
-        relativetouchzone.set(1,new MyPoint( B.location.x + 3, B.location.y - 3));
-        relativetouchzone.set(2,new MyPoint( B.location.x - 3, B.location.y + 3));
-        relativetouchzone.set(3,new MyPoint( A.location.x - 3, A.location.y + 3));
+        touchzone.set(0,new MyPoint( A.location.x + 3, A.location.y - 3));
+        touchzone.set(1,new MyPoint( B.location.x + 3, B.location.y - 3));
+        touchzone.set(2,new MyPoint( B.location.x - 3, B.location.y + 3));
+        touchzone.set(3,new MyPoint( A.location.x - 3, A.location.y + 3));
 
-        for(int i=0;i<relativetouchzone.size();i++)
-        {
-            touchzone.set(i,new MyPoint((relativetouchzone.get(i).x)*round(State.getCurrentState().mapCamera.getSize()),(relativetouchzone.get(i).y)*round(State.getCurrentState().mapCamera.getSize())) );
-        }
+
 
     }
 
@@ -77,10 +71,9 @@ public class Wall extends MapElement implements Serializable
 
         g.setColor(Color.blue);
         Polygon poly=new Polygon();
-        for(int i=0;i<relativetouchzone.size();i++)
+        for(int i=0;i<touchzone.size();i++)
         {
-            poly.addPoint(relativetouchzone.get(i).x/round(State.getCurrentState().mapCamera.getSize()),relativetouchzone.get(i).y/round(State.getCurrentState().mapCamera.getSize()));
-
+            poly.addPoint(touchzone.get(i).x,touchzone.get(i).y);
         }
 
         g.drawPolygon(poly);
