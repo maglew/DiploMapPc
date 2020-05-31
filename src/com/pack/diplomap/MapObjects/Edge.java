@@ -20,23 +20,24 @@ public class Edge extends MapElement implements Serializable
     {
         this.movable = true;
         location = coord;
-        location = location;
-        this.touchzone.add(0,new MyPoint(location.x   - 10+ State.getCurrentState().mapCamera.getWorldloc().x,location.y   - 10+State.getCurrentState().mapCamera.getWorldloc().y));
-        this.touchzone.add(1,new MyPoint(location.x   + 10+ State.getCurrentState().mapCamera.getWorldloc().x,location.y   - 10+State.getCurrentState().mapCamera.getWorldloc().y));
-        this.touchzone.add(2,new MyPoint(location.x   + 10+ State.getCurrentState().mapCamera.getWorldloc().x,location.y   + 10+State.getCurrentState().mapCamera.getWorldloc().y));
-        this.touchzone.add(3,new MyPoint(location.x   - 10+ State.getCurrentState().mapCamera.getWorldloc().x,location.y   +10+State.getCurrentState().mapCamera.getWorldloc().y));
+
+        this.touchzone.add(0,new MyPoint(location.x   - 10,location.y   - 10));
+        this.touchzone.add(1,new MyPoint(location.x   + 10,location.y   - 10));
+        this.touchzone.add(2,new MyPoint(location.x   + 10,location.y   + 10));
+        this.touchzone.add(3,new MyPoint(location.x   - 10,location.y   +10));
         elemid = ++MapElement.numInstances + "E";
     }
 
     public Edge()
     {
         this.movable = true;
+
         location = new MyPoint(0,0);
-        location = location;
-        this.touchzone.add(new MyPoint(location.x - width / 2-5, location.y - width / 2-5));
-        this.touchzone.add(new MyPoint(location.x - width / 2 + 5, location.y - width / 2 - 5));
-        this.touchzone.add(new MyPoint(location.x - width / 2 + 5, location.y - width / 2 + 5));
-        this.touchzone.add(new MyPoint(location.x - width / 2 - 5, location.y - width / 2 + 5));
+
+        this.touchzone.add(0,new MyPoint(location.x   - 10,location.y   - 10));
+        this.touchzone.add(1,new MyPoint(location.x   + 10,location.y   - 10));
+        this.touchzone.add(2,new MyPoint(location.x   + 10,location.y   + 10));
+        this.touchzone.add(3,new MyPoint(location.x   - 10,location.y   +10));
         elemid = ++MapElement.numInstances + "E";
     }
 

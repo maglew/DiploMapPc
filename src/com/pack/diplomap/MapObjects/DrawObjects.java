@@ -50,6 +50,7 @@ public  class DrawObjects implements Serializable
 
     public void render(Graphics g)
     {
+
         for(MapElement me: elements)
         {
             me.render(g);

@@ -22,7 +22,6 @@ public  class MapCamera
     public  MapCamera(Handler handler)
     {
         this.handler=handler;
-        this.screenRect=new Rectangle(100,100,700,700);
 
     }
 
@@ -30,6 +29,8 @@ public  class MapCamera
     {
         canvasW= State.getCurrentState().canvas.getWidth() ;
         canvasH=State.getCurrentState().canvas.getHeight();
+        screenRect=new Rectangle(50,50,canvasW-100,canvasH-100);
+
         cursor= MouseManager.getMousecoord();
         if(MouseManager.right &&moved==false)
         {
@@ -55,7 +56,7 @@ public  class MapCamera
         g.setColor(Color.yellow);
 
         g.drawString("size: "+size,750,20);
-
+        g.drawRect(screenRect.x,screenRect.y,screenRect.width,screenRect.height);
         g.drawString("worldloc: "+relativeworldlocation.toString(),750,50);
         g.drawString("mousecoord: "+ MouseManager.mousecoord.toString(),750,65);
 

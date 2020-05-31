@@ -35,7 +35,6 @@ public class MapState extends State
 
     public MapState(Handler handler)
     {
-
         drawMap=new DrawMap();
         mapCamera=new MapCamera(handler);
 
@@ -64,9 +63,11 @@ public class MapState extends State
         comboBox2 = new JComboBox(items2);
 
         canvas=new Canvas();
-        canvas.setPreferredSize(new Dimension(1000, 900));
-        canvas.setMaximumSize(new Dimension(1000, 900));
-        canvas.setMinimumSize(new Dimension(1000, 900));
+        canvas.setBounds(0,0,1000,900);
+        canvas.setSize(new Dimension(1000, 900));
+      //  canvas.setPreferredSize(new Dimension(990, 890));
+       // canvas.setMaximumSize(new Dimension(990, 890));
+       // canvas.setMinimumSize(new Dimension(990, 890));
         canvas.setFocusable(false);
 
         this.add(exitButt);

@@ -13,7 +13,8 @@ public class MapInterface
 {
     public  static String regime = "move";
     public static int chosedObjId = -1;
-    public static int tempchosedObjId = -1;
+    public static int aimObjId = -1;
+
     public static String typeObj = "Edge";
 
     public static  int schot=0;
@@ -31,17 +32,28 @@ public class MapInterface
 
     public MapInterface()
     {
+
     }
 
     public void tick()
     {
-          chosedObjId = State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.searchObjByCoord(new Point((MouseManager.getRelmousecoord().x), MouseManager.getRelmousecoord().y));
-
+        aimObjId = State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.searchObjByCoord(new Point((MouseManager.getRelmousecoord().x), MouseManager.getRelmousecoord().y));
+     /*   if(MouseManager.left)
+        {
+            chosedObjId= State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.searchObjByCoord(new Point((MouseManager.getRelmousecoord().x), MouseManager.getRelmousecoord().y));
+        }*/
+        if(!MouseManager.left)
+        {
+            chosedObjId=-1;
+        }
         switch (regime)
         {
             case "delete":
+                if(MouseManager.left)
+                chosedObjId= State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.searchObjByCoord(new Point((MouseManager.getRelmousecoord().x), MouseManager.getRelmousecoord().y));
+
                 typeObj = "";
-                if (MouseManager.left)
+                if (chosedObjId!=-1)
                 {
                     State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.delobj(chosedObjId);
                 }
@@ -138,26 +150,31 @@ public class MapInterface
 */
                 break;
             case "move":
-
                 typeObj = "";
-
-                if (MouseManager.left)
-                {
                     if (!dragged)
                     {
+                        chosedObjId= State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.searchObjByCoord(MouseManager.getRellefttouch());
                         dragged = true;
-
+                        razn=new MyPoint(0,0);
+                        if (chosedObjId != -1)
+                        {
+                            razn.x = MouseManager.getRellefttouch().x-State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.getElement(chosedObjId).location.x;
+                            razn.y = MouseManager.getRellefttouch().y-State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.getElement(chosedObjId).location.y;
+                        }
                     }
 
-                    if (chosedObjId != -1 && MouseManager.left&&MouseManager.relleftGrab.x!=0&&MouseManager.relleftGrab.y!=0)
+                    if (chosedObjId != -1 && MouseManager.left)
                     {
-                        State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.moveElement(chosedObjId, new MyPoint((MouseManager.relleftGrab.x), (MouseManager.relleftGrab.y)));
+                      //  State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.moveElement(chosedObjId, new MyPoint((MouseManager.relleftGrab.x), (MouseManager.relleftGrab.y)));
+                        State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.moveElement(chosedObjId, new MyPoint((MouseManager.getRelmousecoord().x-razn.x), (MouseManager.getRelmousecoord().y-razn.y)));
+
                     }
-                }
+
                 if (!MouseManager.left && dragged)
                 {
-                    chosedObjId = -1;
-                    dragged = false; }
+                    dragged = false;
+                }
+
                 break;
 
         }
@@ -169,7 +186,7 @@ public class MapInterface
         g.drawString(regime,650,100);
         g.drawString(typeObj+"",650,90);
         g.drawString("relmouse:"+MouseManager.getRelmousecoord().x+"."+MouseManager.getRelmousecoord().y,650,120);
-        g.drawString("temobjid:"+tempchosedObjId,650,110);
+        g.drawString("temobjid:"+aimObjId,650,110);
         g.drawString("chosedobj:"+chosedObjId+"",650,130);
     }
 
