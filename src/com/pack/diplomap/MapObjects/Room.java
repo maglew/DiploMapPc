@@ -152,8 +152,8 @@ public class Room extends MapElement implements Serializable
     public void setName(String name) {
         this.name = name;
     }
-
-    public  void setedgessize(int size)
+    @Override
+    public  void setedgescount(int size)
     {
         if (size == edges.size())
         {

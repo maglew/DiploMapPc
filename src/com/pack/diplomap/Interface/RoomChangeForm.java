@@ -5,6 +5,7 @@ import com.pack.diplomap.States.State;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 public class RoomChangeForm {
     private JPanel panel1;
@@ -28,6 +29,7 @@ int id=-1;
             @Override
             public void actionPerformed(ActionEvent e) {
                 State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.elements.get(id).setedgescount(Integer.parseInt(textField1.getText()));
+                frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
             }
         });
 
