@@ -13,13 +13,13 @@ import java.awt.event.ActionListener;
 public  class MenuState extends State
 {
   // public JPanel menupanel=new JPanel();
-    JButton b1 = new JButton("Map");
-    JButton b2 = new JButton("Test");
+    JButton redactbutt = new JButton("Redactor");
+    JButton mapbutt = new JButton("Map");
 
     public MenuState(Handler handler)
     {
-        this.add(b1);
-        this.add(b2);
+        this.add(mapbutt);
+        this.add(redactbutt);
         this.addliss();
 
     }
@@ -27,17 +27,17 @@ public  class MenuState extends State
 
     void  addliss() {
 
-        b1.addActionListener(new ActionListener() {
+        mapbutt.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 Main.window.getCardLayout().show(Main.window.getCardPanel(), "map");
                 State.setCurrentState(Main.window.mapState);
             }
         });
 
-        b2.addActionListener(new ActionListener() {
+        redactbutt.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                Main.window.getCardLayout().show(Main.window.getCardPanel(), "test");
-                State.setCurrentState(Main.window.testState);
+                Main.window.getCardLayout().show(Main.window.getCardPanel(), "redactor");
+                State.setCurrentState(Main.window.redactState);
             }
         });
 

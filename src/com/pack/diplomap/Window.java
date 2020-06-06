@@ -3,6 +3,7 @@ package com.pack.diplomap;
 
 import com.pack.diplomap.States.State;
 import com.pack.diplomap.States.*;
+import com.pack.diplomap.gfx.Assets;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +20,7 @@ public class Window
 
     public State menuState;
     public State mapState;
-    public State testState;
+    public State redactState;
 
     JPanel cardPanel;
 
@@ -32,6 +33,7 @@ public class Window
         this.width = width;
         this.height = height;
         handler=new Handler(this);
+        Assets.init();
        // createDisplay();
 
     }
@@ -48,7 +50,7 @@ public class Window
 
         menuState=new MenuState(handler);
         mapState=new MapState(handler);
-        testState=new TestState(handler);
+        redactState=new RedactorState(handler);
 
         cardLayout = new CardLayout();
          cardPanel = new JPanel(cardLayout);
@@ -57,7 +59,7 @@ public class Window
 
         cardPanel.add(menuState,"menu");
         cardPanel.add(mapState,"map");
-        cardPanel.add(testState,"test");
+        cardPanel.add(redactState,"redactor");
         State.setCurrentState(Main.window.menuState);
 
 

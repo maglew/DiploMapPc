@@ -1,5 +1,7 @@
 package com.pack.diplomap.MapObjects;
 
+import com.pack.diplomap.gfx.Assets;
+
 import java.awt.*;
 import java.io.Serializable;
 

@@ -1,6 +1,7 @@
 package com.pack.diplomap.MapObjects;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,6 +14,7 @@ public  class DrawObjects implements Serializable
     public ArrayList<Grid> grids = new ArrayList<>();
     public ArrayList<Room> rooms = new ArrayList<>();
     public ArrayList<Wall> walls = new ArrayList<>();
+    public ArrayList<MapImage> images = new ArrayList<>();
 
     public DrawObjects()
     {
@@ -28,15 +30,12 @@ public  class DrawObjects implements Serializable
 
     public  void rasst()
     {
-
         elements.clear();
-
+        elements.addAll(images);
         elements.addAll(grids);
         elements.addAll(edges);
-        //  elements.addRange(zones);
         elements.addAll(rooms);
         elements.addAll(walls);
-
     }
 
 
@@ -119,14 +118,11 @@ public  class DrawObjects implements Serializable
 
     public void addNewRoom(MyPoint coord)
     {
-
         edges.add(new Edge(new MyPoint(coord.x - 50, coord.y - 50)));
         edges.add(new Edge(new MyPoint(coord.x + 50, coord.y - 50)));
         edges.add(new Edge(new MyPoint(coord.x + 50, coord.y + 50)));
         edges.add(new Edge(new MyPoint(coord.x - 50, coord.y + 50)));
-
         rooms.add(new Room(edges.get(edges.size()-4), edges.get(edges.size() - 3), edges.get(edges.size() - 2), edges.get(edges.size() - 1)));
-
         rasst();
     }
 
