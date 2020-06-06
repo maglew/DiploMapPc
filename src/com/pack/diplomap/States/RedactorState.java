@@ -119,6 +119,8 @@ public class RedactorState extends State
         g2.scale(mapCamera.getSize(),mapCamera.getSize());
         drawMap.render(g);
 
+
+
     }
 
     void buttlistadd()
@@ -161,7 +163,7 @@ public class RedactorState extends State
         });
         redButt.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                //  mapInterface.regime="redact";
+                redactorInterface.regime="redact";
             }
         });
 

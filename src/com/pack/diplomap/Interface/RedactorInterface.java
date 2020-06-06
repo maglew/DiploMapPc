@@ -2,6 +2,7 @@ package com.pack.diplomap.Interface;
 
 import com.pack.diplomap.MapObjects.Edge;
 import com.pack.diplomap.MapObjects.MyPoint;
+import com.pack.diplomap.MapObjects.Room;
 import com.pack.diplomap.States.State;
 
 import java.awt.*;
@@ -98,36 +99,19 @@ public class RedactorInterface
 
 
                 break;
-            case "change":
-/*
+            case "redact":
+
                 typeObj = "";
                 if (MouseManager.left)
                 {
-                    chosedObjId = State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.searchObjByCoord(new Point((int)MouseManager.lefttouch.x, (int)MouseManager.lefttouch.y));
+                    chosedObjId= State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.searchObjByCoord(new Point((MouseManager.getRelmousecoord().x), MouseManager.getRelmousecoord().y));
                     if (chosedObjId != -1)
                     {
 
-                        if (!opened && State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.getElement(chosedObjId) is Edge)
-                        {
-                            objRedForm = new EdgeChangeForm(chosedObjId);
-                            objRedForm.ShowDialog();
-                            MouseManager.left = false;
-
-                            break;
-                        }
-
-                        if (!opened && State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.getElement(chosedObjId) is MapZone)
-                        {
-                            ZoneChangeForm roomChangeForm = new ZoneChangeForm(chosedObjId);
-                            roomChangeForm.ShowDialog();
-                            MouseManager.left = false;
-
-                            break;
-                        }
-                        if (!opened && State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.getElement(chosedObjId) is Room)
+                        if (!opened && State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.getElement(chosedObjId) instanceof Room)
                         {
                             RoomChangeForm roomChangeForm = new RoomChangeForm(chosedObjId);
-                            roomChangeForm.ShowDialog();
+
                             MouseManager.left = false;
 
                             break;
@@ -136,15 +120,14 @@ public class RedactorInterface
 
 
                 }
-                if (MouseManager.left==false)
+                if (!MouseManager.left)
                 {
-                    // MouseManager.leftGrab = new Point(0, 0);
-                    // MouseManager.left = false;
+
                     chosedObjId = -1;
-                    //   MouseManager.lefttouch = new Point(0, 0);
+
                     opened = false;
                 }
-*/
+
                 break;
             case "move":
                 typeObj = "";

@@ -34,7 +34,7 @@ public class Window
         this.height = height;
         handler=new Handler(this);
         Assets.init();
-       // createDisplay();
+
 
     }
 
