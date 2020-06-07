@@ -18,6 +18,7 @@ public class RedactorState extends State
     int i=0;
     RedactorInterface redactorInterface;
     JButton exitButt;
+    JButton addButt;
     JButton redButt;
     JButton delButt;
     JButton createButt;
@@ -36,6 +37,7 @@ public class RedactorState extends State
         mapCamera = new MapCamera(handler);
 
         exitButt = new JButton("exit");
+        addButt = new JButton("add");
         redButt = new JButton("redact");
         delButt = new JButton("delete");
         createButt = new JButton("create");
@@ -68,6 +70,7 @@ public class RedactorState extends State
         canvas.setFocusable(false);
 
         this.add(exitButt);
+        this.add(addButt);
         this.add(redButt);
         this.add(delButt);
         this.add(createButt);
@@ -93,7 +96,7 @@ public class RedactorState extends State
 
         thread=new MainThread();
 
-        drawMap.add();
+        //drawMap.add();
         thread.start();
 
         buttlistadd();
@@ -145,6 +148,12 @@ public class RedactorState extends State
             }
         });
 
+        addButt.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event)
+            {
+                State.getCurrentState().drawMap.add();
+            }
+        });
         zeroButt.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event)
             {

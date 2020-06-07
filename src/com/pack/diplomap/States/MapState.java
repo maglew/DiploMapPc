@@ -77,7 +77,8 @@ public class MapState extends State
 
         thread=new MainThread();
 
-        drawMap.add();
+       // drawMap.add();
+        drawMap.load();
         thread.start();
 
         buttlistadd();

@@ -12,14 +12,14 @@ public class Room extends MapElement implements Serializable
     public ArrayList<Wall> walls = new ArrayList<>();
     public ArrayList<Edge> edges = new ArrayList<>();
     public ArrayList<MyPoint> dest = new ArrayList<>();
-    MyPoint razn = new MyPoint(0, 0);
+
     public static int Statnumber=0;
     public  int number=0;
     public String name="";
+
     public Room(Edge A, Edge B, Edge C, Edge D)
     {
         location = new MyPoint((A.location.x+ C.location.x)/2, (A.location.y + C.location.y) / 2);
-       // location=new MyPoint(A.location.x,A.location.y);
         this.movable = true;
 
         this.edges.add(A);
@@ -119,7 +119,8 @@ public class Room extends MapElement implements Serializable
         {
             walls.get(j).render(g);
         }
-        g.setColor(Color.red);
+     //   g.setColor(Color.red);
+        g.setColor(new Color(255,0,0,128) );
         Polygon poly=new Polygon();
         for(int i=0;i<touchzone.size();i++)
         {
