@@ -53,7 +53,9 @@
             <children>
               <component id="4e647" class="javax.swing.JTextField" binding="textnumber">
                 <constraints/>
-                <properties/>
+                <properties>
+                  <columns value="3"/>
+                </properties>
               </component>
               <component id="81280" class="javax.swing.JButton" binding="setNumberButton" default-binding="true">
                 <constraints/>
@@ -70,7 +72,9 @@
             <children>
               <component id="c9fcb" class="javax.swing.JTextField" binding="textname">
                 <constraints/>
-                <properties/>
+                <properties>
+                  <columns value="10"/>
+                </properties>
               </component>
               <component id="3a898" class="javax.swing.JButton" binding="setNameButton">
                 <constraints/>
@@ -87,7 +91,9 @@
             <children>
               <component id="f19ae" class="javax.swing.JTextField" binding="textdes">
                 <constraints/>
-                <properties/>
+                <properties>
+                  <columns value="10"/>
+                </properties>
               </component>
               <component id="27359" class="javax.swing.JButton" binding="setDescriptionButton">
                 <constraints/>
@@ -104,7 +110,9 @@
             <children>
               <component id="27858" class="javax.swing.JTextField" binding="textweb">
                 <constraints/>
-                <properties/>
+                <properties>
+                  <columns value="10"/>
+                </properties>
               </component>
               <component id="12468" class="javax.swing.JButton" binding="setWebSiteButton">
                 <constraints/>
@@ -121,7 +129,9 @@
             <children>
               <component id="44285" class="javax.swing.JTextField" binding="texttel">
                 <constraints/>
-                <properties/>
+                <properties>
+                  <columns value="11"/>
+                </properties>
               </component>
               <component id="6dfa0" class="javax.swing.JButton" binding="setTelephoneButton">
                 <constraints/>
