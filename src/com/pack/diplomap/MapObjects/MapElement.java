@@ -14,7 +14,7 @@ public abstract class MapElement implements Serializable
     public boolean deletable = true;
     public MyPoint location = new MyPoint(0, 0);
     public int width = 10;
-
+RoomInfo roomInfo;
     public String elemid;
     public static int numInstances;
     //  public int rotation;
@@ -54,6 +54,14 @@ public abstract class MapElement implements Serializable
 
     }
 
+    public  void setroom(RoomInfo roomInfo)
+    {
 
+    }
+
+    public RoomInfo getRoomInfo()
+    {
+      return  roomInfo;
+    }
 
 }

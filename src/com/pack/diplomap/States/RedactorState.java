@@ -30,7 +30,7 @@ public class RedactorState extends State
     JButton loadButt;
     JComboBox comboBox1;
     JComboBox comboBox2;
-
+JTextField textField;
 
     public RedactorState(Handler handler) {
         drawMap = new DrawMap();
@@ -157,7 +157,7 @@ public class RedactorState extends State
         zeroButt.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event)
             {
-                State.getCurrentState().mapCamera.worldlocation.setLocation(new Point(0,0));
+                State.getCurrentState().mapCamera.relativeworldlocation.setLocation(new Point(0,0));
             }
         });
         saveButt.addActionListener(new ActionListener() {

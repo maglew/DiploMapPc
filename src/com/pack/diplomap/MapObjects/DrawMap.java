@@ -74,7 +74,6 @@ public class DrawMap implements Serializable
 
     }
 
-
     public  void add()
     {
       //  floors.get(0).drawObjects.grids.add(new Grid(10, 100));

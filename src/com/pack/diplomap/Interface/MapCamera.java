@@ -15,8 +15,8 @@ public  class MapCamera
     boolean moved=false;
     public static int canvasW=0 ;
     public static int canvasH=0;
-    public static Point  worldlocation = new Point(0, 0);
-    public static Point  relativeworldlocation = new Point(0, 0);
+    public  Point  worldlocation = new Point(0, 0);
+    public  Point  relativeworldlocation = new Point(0, 0);
     public static Point  cursor = new Point(0, 0);
 
     public  MapCamera(Handler handler)

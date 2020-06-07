@@ -16,7 +16,7 @@ public class Room extends MapElement implements Serializable
     public static int Statnumber=0;
     public  int number=0;
     public String name="";
-
+    RoomInfo roomInfo;
     public Room(Edge A, Edge B, Edge C, Edge D)
     {
         location = new MyPoint((A.location.x+ C.location.x)/2, (A.location.y + C.location.y) / 2);
@@ -49,6 +49,7 @@ public class Room extends MapElement implements Serializable
         elemid =++MapElement.numInstances+"R";
         Room.Statnumber++;
         number+=Room.Statnumber;
+        roomInfo=new RoomInfo();
     }
 
     public Room()
@@ -83,6 +84,7 @@ public class Room extends MapElement implements Serializable
             dest.get(i).set(location.x - edges.get(i).location.x, location.y - edges.get(i).location.y);
         }
         elemid =++MapElement.numInstances+"R";
+        roomInfo=new RoomInfo();
     }
 
     @Override
@@ -184,5 +186,17 @@ public class Room extends MapElement implements Serializable
                 touchzone.remove(i);
             }
         }
+    }
+
+    @Override
+    public void setroom(RoomInfo roomInfo)
+    {
+        this.roomInfo=roomInfo;
+    }
+
+    @Override
+    public RoomInfo getRoomInfo()
+    {
+        return this.roomInfo;
     }
 }

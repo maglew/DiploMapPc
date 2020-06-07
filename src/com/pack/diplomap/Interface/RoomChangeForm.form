@@ -32,7 +32,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="d35af" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+              <component id="d35af" class="javax.swing.JTextField" binding="textedges">
                 <constraints/>
                 <properties>
                   <columns value="3"/>
@@ -51,7 +51,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="4e647" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+              <component id="4e647" class="javax.swing.JTextField" binding="textnumber">
                 <constraints/>
                 <properties/>
               </component>
@@ -59,6 +59,74 @@
                 <constraints/>
                 <properties>
                   <text value="SetNumber"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="4f007" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="c9fcb" class="javax.swing.JTextField" binding="textname">
+                <constraints/>
+                <properties/>
+              </component>
+              <component id="3a898" class="javax.swing.JButton" binding="setNameButton">
+                <constraints/>
+                <properties>
+                  <text value="SetName"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="a3a70" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="f19ae" class="javax.swing.JTextField" binding="textdes">
+                <constraints/>
+                <properties/>
+              </component>
+              <component id="27359" class="javax.swing.JButton" binding="setDescriptionButton">
+                <constraints/>
+                <properties>
+                  <text value="SetDescription"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="9ded4" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="27858" class="javax.swing.JTextField" binding="textweb">
+                <constraints/>
+                <properties/>
+              </component>
+              <component id="12468" class="javax.swing.JButton" binding="setWebSiteButton">
+                <constraints/>
+                <properties>
+                  <text value="SetWebSite"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="f8097" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="44285" class="javax.swing.JTextField" binding="texttel">
+                <constraints/>
+                <properties/>
+              </component>
+              <component id="6dfa0" class="javax.swing.JButton" binding="setTelephoneButton">
+                <constraints/>
+                <properties>
+                  <text value="SetTelephone"/>
                 </properties>
               </component>
             </children>
