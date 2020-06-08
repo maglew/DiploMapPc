@@ -30,7 +30,7 @@ public class RedactorState extends State
     JButton loadButt;
     JComboBox comboBox1;
     JComboBox comboBox2;
-JTextField textField;
+    JTextField textField;
 
     public RedactorState(Handler handler) {
         drawMap = new DrawMap();

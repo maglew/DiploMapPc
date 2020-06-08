@@ -8,6 +8,7 @@ import com.pack.diplomap.Main;
 import com.pack.diplomap.MainThread;
 import com.pack.diplomap.MapObjects.DrawMap;
 import com.pack.diplomap.MapObjects.MyPoint;
+import com.pack.diplomap.MapObjects.Room;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,7 +25,8 @@ public class MapState extends State
     JButton zoomOutButt;
     JButton zeroButt;
     JComboBox comboBox2;
-
+    JTextField textField;
+    JButton findButt;
     public MapState(Handler handler)
     {
         drawMap=new DrawMap();
@@ -35,7 +37,8 @@ public class MapState extends State
         zoomInButt= new JButton("zoom IN");
         zoomOutButt= new JButton("zoom OUT");
         zeroButt= new JButton("zero");
-
+        textField=new JTextField(3);
+        findButt= new JButton("find");
         String[] items = {
                 "Room",
                 "Edge",
@@ -52,9 +55,6 @@ public class MapState extends State
         canvas=new Canvas();
         canvas.setBounds(0,0,1000,900);
         canvas.setSize(new Dimension(1000, 900));
-      //  canvas.setPreferredSize(new Dimension(990, 890));
-       // canvas.setMaximumSize(new Dimension(990, 890));
-       // canvas.setMinimumSize(new Dimension(990, 890));
         canvas.setFocusable(false);
 
         this.add(exitButt);
@@ -64,6 +64,8 @@ public class MapState extends State
         this.add(zeroButt);
         this.add(comboBox2);
         comboBox2.setEditable(true);
+        this.add(textField);
+        this.add(findButt);
         this.add(canvas);
 
     }
@@ -108,6 +110,23 @@ public class MapState extends State
 
     void buttlistadd()
     {
+
+        findButt.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event)
+            {
+                int num=Integer.parseInt(textField.getText());
+
+                for(Room room : State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.rooms)
+                {
+                    if(room.roomInfo.getNumber() ==num)
+                    {
+                        State.getCurrentState().mapCamera.relativeworldlocation.setLocation( new Point(room.location.x,room.location.y));
+                    }
+                }
+            }
+        });
+
+
         comboBox2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
 
@@ -121,7 +140,7 @@ public class MapState extends State
         zeroButt.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event)
             {
-               State.getCurrentState().mapCamera.worldlocation.setLocation(new Point(0,0));
+               State.getCurrentState().mapCamera.relativeworldlocation.setLocation(new Point(0,0));
             }
         });
 

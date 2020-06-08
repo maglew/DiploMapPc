@@ -16,7 +16,7 @@ public class Room extends MapElement implements Serializable
     public static int Statnumber=0;
     public  int number=0;
     public String name="";
-    RoomInfo roomInfo;
+   public RoomInfo roomInfo;
 
     public Room(Edge A, Edge B, Edge C, Edge D)
     {
