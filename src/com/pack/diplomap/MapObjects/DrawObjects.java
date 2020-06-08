@@ -14,7 +14,7 @@ public  class DrawObjects implements Serializable
     public ArrayList<Grid> grids = new ArrayList<>();
     public ArrayList<Room> rooms = new ArrayList<>();
     public ArrayList<Wall> walls = new ArrayList<>();
-    public ArrayList<MapImage> images = new ArrayList<>();
+    public  MapImage image=new MapImage();
 
     public DrawObjects()
     {
@@ -31,7 +31,7 @@ public  class DrawObjects implements Serializable
     public  void rasst()
     {
         elements.clear();
-        elements.addAll(images);
+        elements.add(image);
         elements.addAll(grids);
         elements.addAll(edges);
         elements.addAll(rooms);
@@ -81,7 +81,6 @@ public  class DrawObjects implements Serializable
 
         return -1;
     }
-
 
     public  MapElement getElement(int id)
     {

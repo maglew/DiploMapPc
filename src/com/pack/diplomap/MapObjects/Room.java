@@ -17,6 +17,7 @@ public class Room extends MapElement implements Serializable
     public  int number=0;
     public String name="";
     RoomInfo roomInfo;
+
     public Room(Edge A, Edge B, Edge C, Edge D)
     {
         location = new MyPoint((A.location.x+ C.location.x)/2, (A.location.y + C.location.y) / 2);

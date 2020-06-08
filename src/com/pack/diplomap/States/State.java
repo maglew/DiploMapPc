@@ -29,6 +29,7 @@ public abstract class State extends JPanel
 	}
 
 	private static State currentState = null;
+
 	public static void setCurrentState(State state)
 	{
 		currentState = state;
@@ -40,7 +41,6 @@ public abstract class State extends JPanel
 
 	abstract void init();
 	{
-
 	}
 
 	public abstract void tick();

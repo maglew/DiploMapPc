@@ -1,7 +1,10 @@
 package com.pack.diplomap.MapObjects;
 
-public class RoomInfo
+import java.io.Serializable;
+
+public class RoomInfo implements Serializable
 {
+    private static final long serialVersionUID = -1315152605557457796L;
     int number;
     String name;
     String description;
@@ -10,8 +13,20 @@ public class RoomInfo
 
     public RoomInfo()
     {
+         number=0;
+         name="";
+         description="";
+         site="";
+         telephone="";
     }
 
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
     public String getName() {
         return name;
     }
@@ -44,11 +59,5 @@ public class RoomInfo
         this.telephone = telephone;
     }
 
-    public int getNumber() {
-        return number;
-    }
 
-    public void setNumber(int number) {
-        this.number = number;
-    }
 }

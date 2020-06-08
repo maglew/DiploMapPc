@@ -85,12 +85,16 @@ public class DrawMap implements Serializable
         floors.get(0).drawObjects.addNewRoom(new MyPoint(250,350) );
 
       //  floors.get(1).drawObjects.grids.add(new Grid(10, 100));
-
-        floors.get(0).drawObjects.images.add(new MapImage(Assets.firstFloor,new MyPoint(0,0) ));
-        floors.get(1).drawObjects.images.add(new MapImage(Assets.secondFloor,new MyPoint(0,0) ));
-        floors.get(2).drawObjects.images.add(new MapImage(Assets.thirdFloor,new MyPoint(0,0) ));
-        floors.get(3).drawObjects.images.add(new MapImage(Assets.forthFloor,new MyPoint(0,0) ));
-
+        floors.get(0).drawObjects.image= new MapImage(Assets.firstFloor,new MyPoint(0,0) );
+        floors.get(1).drawObjects.image= new MapImage(Assets.secondFloor,new MyPoint(0,0) );
+        floors.get(2).drawObjects.image= new MapImage(Assets.thirdFloor,new MyPoint(0,0) );
+        floors.get(3).drawObjects.image= new MapImage(Assets.forthFloor,new MyPoint(0,0) );
+        /*
+        floors.get(0).drawObjects.image.add(new MapImage(Assets.firstFloor,new MyPoint(0,0) ));
+        floors.get(1).drawObjects.image.add(new MapImage(Assets.secondFloor,new MyPoint(0,0) ));
+        floors.get(2).drawObjects.image.add(new MapImage(Assets.thirdFloor,new MyPoint(0,0) ));
+        floors.get(3).drawObjects.image.add(new MapImage(Assets.forthFloor,new MyPoint(0,0) ));
+*/
      //   floors.get(2).drawObjects.grids.add(new Grid(10, 100));
 
         floors.get(0).drawObjects.rasst();

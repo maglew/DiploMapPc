@@ -15,16 +15,18 @@ public class RoomChangeForm {
     private JButton setEdgesButton;
     private JButton setNumberButton;
     private JButton OKButton;
-    private JTextField textedges;
-    private JTextField textnumber;
     private JButton setNameButton;
     private JButton setDescriptionButton;
     private JButton setWebSiteButton;
     private JButton setTelephoneButton;
+    private JTextField textedges;
+    private JTextField textnumber;
     private JTextField textname;
     private JTextField textdes;
     private JTextField textweb;
     private JTextField texttel;
+
+
     int id=-1;
     RoomInfo roomInfo;
     public RoomChangeForm(int id)
@@ -36,6 +38,12 @@ public class RoomChangeForm {
         frame.setContentPane(panel1);
         frame.setSize(500, 500);
         frame.setVisible(true);
+        textedges.setText(State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.elements.get(id).touchzone.size()+"");
+        textnumber.setText(roomInfo.getNumber()+"");
+        textname.setText(roomInfo.getName()+"");
+        textdes.setText(roomInfo.getDescription()+"");
+        textweb.setText(roomInfo.getSite()+"");
+        texttel.setText(roomInfo.getTelephone()+"");
 
         setEdgesButton.addActionListener(new ActionListener() {
             @Override
@@ -49,7 +57,7 @@ public class RoomChangeForm {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                roomInfo.setNumber(Integer.parseInt(textedges.getText()));
+                roomInfo.setNumber(Integer.parseInt(textnumber.getText()));
                 State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.elements.get(id).setroom(roomInfo);
 
             }

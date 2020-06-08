@@ -2,16 +2,28 @@ package com.pack.diplomap.MapObjects;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 
-public class MapImage extends MapElement
+public class MapImage extends MapElement implements Serializable
 {
-    BufferedImage image;
+    private static final long serialVersionUID = -8515152004847457796L;
+    transient BufferedImage image;
 
     public MapImage(BufferedImage image,MyPoint loc)
     {
-
         this.image = image;
         this.location=loc;
+    }
+
+    public MapImage(MyPoint loc)
+    {
+        this.location=loc;
+    }
+
+    public MapImage()
+    {
+        this.location=new MyPoint(0,0);
+        image=null;
     }
 
     @Override
@@ -20,7 +32,9 @@ public class MapImage extends MapElement
     }
 
     @Override
-    public void render(Graphics g) {
+    public void render(Graphics g)
+    {
+if(image!=null)
         g.drawImage(image,  location.x, location.y, image.getWidth(), image.getHeight(), null);
 
     }
