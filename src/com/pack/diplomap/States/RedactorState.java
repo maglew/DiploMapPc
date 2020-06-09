@@ -120,10 +120,8 @@ public class RedactorState extends State
         redactorInterface.render(g);
         g2.translate(mapCamera.getWorldloc().x,mapCamera.getWorldloc().y);
         g2.scale(mapCamera.getSize(),mapCamera.getSize());
+        g2.rotate(mapCamera.getRotate());
         drawMap.render(g);
-
-
-
     }
 
     void buttlistadd()

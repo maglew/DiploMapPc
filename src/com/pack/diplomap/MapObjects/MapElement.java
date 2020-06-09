@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public abstract class MapElement implements Serializable
 {
     private static final long serialVersionUID = -3515152604847457796L;
-    public String text = "";
     public ArrayList<MyPoint> touchzone = new ArrayList<>();
     public boolean deletable = true;
     public MyPoint location = new MyPoint(0, 0);

@@ -15,7 +15,6 @@ public class Room extends MapElement implements Serializable
 
     public static int Statnumber=0;
     public  int number=0;
-    public String name="";
    public RoomInfo roomInfo;
 
     public Room(Edge A, Edge B, Edge C, Edge D)
@@ -149,13 +148,7 @@ public class Room extends MapElement implements Serializable
         return super.touchhit(coord);
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
     @Override
     public  void setedgescount(int size)
     {

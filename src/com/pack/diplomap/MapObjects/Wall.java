@@ -55,7 +55,6 @@ public class Wall extends MapElement implements Serializable
         touchzone.set(1,new MyPoint( B.location.x + 3, B.location.y - 3));
         touchzone.set(2,new MyPoint( B.location.x - 3, B.location.y + 3));
         touchzone.set(3,new MyPoint( A.location.x - 3, A.location.y + 3));
-
     }
 
     @Override
