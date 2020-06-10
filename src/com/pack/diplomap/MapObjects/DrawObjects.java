@@ -61,8 +61,9 @@ public  class DrawObjects implements Serializable
     public  void delobj(int id)
     {
         if (id != -1)
-        { elements.remove((elements.get(id))); }
-
+        {
+            elements.remove((elements.get(id)));
+        }
     }
 
     public  int searchObjByCoord(Point touchcoord)

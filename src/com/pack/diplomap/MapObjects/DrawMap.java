@@ -78,11 +78,11 @@ public class DrawMap implements Serializable
     {
       //  floors.get(0).drawObjects.grids.add(new Grid(10, 100));
 
-        floors.get(0).drawObjects.addNewRoom(new MyPoint(100,100) );
+     //   floors.get(0).drawObjects.addNewRoom(new MyPoint(100,100) );
 
-        floors.get(0).drawObjects.addNewRoom(new MyPoint(120,200) );
+     //   floors.get(0).drawObjects.addNewRoom(new MyPoint(120,200) );
 
-        floors.get(0).drawObjects.addNewRoom(new MyPoint(250,350) );
+     //   floors.get(0).drawObjects.addNewRoom(new MyPoint(250,350) );
 
       //  floors.get(1).drawObjects.grids.add(new Grid(10, 100));
         floors.get(0).drawObjects.image= new MapImage(Assets.firstFloor,new MyPoint(0,0) );
