@@ -78,6 +78,10 @@ public class DrawMap implements Serializable
 
     public  void addfloors()
     {
+        floors.get(0).drawObjects.addPointer((new MyPoint(0,0) ));
+        floors.get(1).drawObjects.addPointer((new MyPoint(0,0) ));
+        floors.get(2).drawObjects.addPointer((new MyPoint(0,0) ));
+        floors.get(3).drawObjects.addPointer((new MyPoint(0,0) ));
 
         floors.get(0).drawObjects.image= new MapImage(Assets.firstFloor,new MyPoint(0,0) );
         floors.get(1).drawObjects.image= new MapImage(Assets.secondFloor,new MyPoint(0,0) );

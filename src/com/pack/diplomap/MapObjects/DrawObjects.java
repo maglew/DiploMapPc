@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public  class DrawObjects implements Serializable
 {
@@ -15,6 +14,8 @@ public  class DrawObjects implements Serializable
     public ArrayList<Room> rooms = new ArrayList<>();
     public ArrayList<Wall> walls = new ArrayList<>();
     public  MapImage image=new MapImage();
+   // public ArrayList<MyPointer> myPointers = new ArrayList<>();
+    public MyPointer pointer=new MyPointer();
 
     public DrawObjects()
     {
@@ -27,36 +28,15 @@ public  class DrawObjects implements Serializable
 
     }
 
-
     public  void clearadd()
     {
         elements.clear();
         elements.add(image);
-        elements.addAll(grids);
+       // elements.addAll(grids);
         elements.addAll(edges);
         elements.addAll(rooms);
         elements.addAll(walls);
-    }
-
-    public  void add()
-    {
-
-        elements.add(image);
-        elements.addAll(grids);
-        elements.addAll(edges);
-        elements.addAll(rooms);
-        elements.addAll(walls);
-    }
-
-    public  void clear()
-    {
-        elements.clear();
-    }
-
-    public  void addimage()
-    {
-
-        elements.add(image);
+        elements.add(pointer);
     }
 
 
@@ -75,13 +55,14 @@ public  class DrawObjects implements Serializable
         {
             me.render(g);
         }
+      //  pointer.render(g);
     }
 
 
 
     public  void delobj(int id)
     {
-        if (id != -1)
+        if (id != -1&&elements.get(id).deletable)
         {
             elements.remove((elements.get(id)));
         }
@@ -94,7 +75,7 @@ public  class DrawObjects implements Serializable
 
         for ( MapElement mo : elements)
         {
-            if (mo.touchhit(touchcoord) && mo.deletable)
+            if (mo.touchhit(touchcoord))
             {
                 return i;
             }
@@ -122,16 +103,26 @@ public  class DrawObjects implements Serializable
         {
             if (elements.get(i).elemid== element.elemid)
             {
-                elements.set(i,element) ;
+                elements.set(i,element);
             }
         }
     }
 
+    public  void addPointer(MyPoint myPoint)
+    {
+        pointer=new MyPointer(myPoint);
+        clearadd();
+    }
+
+    public  void addimage(MapImage im)
+    {
+        image=im;
+        clearadd();
+    }
 
 
     public  void addNewEdge(MyPoint coord)
     {
-        // elements.add(new com.com.pack.diplommapandr.Edge(coord));
         edges.add(new Edge(coord));
         clearadd();
     }

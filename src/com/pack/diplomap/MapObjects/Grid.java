@@ -32,6 +32,16 @@ public class Grid extends MapElement implements Serializable
         elemid = ++MapElement.numInstances + "G";
     }
 
+    public Grid(MyPoint coord)
+    {
+        this.deletable = false;
+        this.width = 100;
+        this.diagquads = 10;
+        this.length = 50;
+        location=new MyPoint(coord.x, coord.y);
+        elemid = ++MapElement.numInstances + "G";
+    }
+
     @Override
     public  void tick()
     {

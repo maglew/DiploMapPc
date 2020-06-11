@@ -3,12 +3,9 @@ package com.pack.diplomap.States;
 import com.pack.diplomap.Handler;
 import com.pack.diplomap.Interface.MapCamera;
 import com.pack.diplomap.Interface.MapInterface;
-import com.pack.diplomap.Interface.MouseManager;
 import com.pack.diplomap.Main;
 import com.pack.diplomap.MainThread;
-import com.pack.diplomap.MapObjects.DrawMap;
-import com.pack.diplomap.MapObjects.MyPoint;
-import com.pack.diplomap.MapObjects.Room;
+import com.pack.diplomap.MapObjects.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -115,14 +112,35 @@ public class MapState extends State
             public void actionPerformed(ActionEvent event)
             {
                 int num=Integer.parseInt(textField.getText());
+                int floornum=0;
 
+                for(DrawMapFloor floor:State.getCurrentState().drawMap.floors)
+                {
+                    for(Room room : floor.drawObjects.rooms)
+                    {
+                        if(room.roomInfo.getNumber() ==num)
+                        {
+                            State.getCurrentState().drawMap.selectedfloor=floornum;
+                            State.getCurrentState().mapCamera.relativeworldlocation.setLocation( new Point(room.location.x,room.location.y));
+                            State.getCurrentState().drawMap.floors.get(floornum).drawObjects.pointer.location=((new MyPoint(room.location.x,room.location.y) ));
+
+                          //  State.getCurrentState().drawMap.floors.get(floornum).drawObjects.addPointer((new MyPoint(room.location.x,room.location.y) ));
+                          //  State.getCurrentState().drawMap.floors.get(floornum).drawObjects.clearadd();
+                        }
+                    }
+
+                    floornum++;
+                }
+/*
                 for(Room room : State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.rooms)
                 {
                     if(room.roomInfo.getNumber() ==num)
                     {
                         State.getCurrentState().mapCamera.relativeworldlocation.setLocation( new Point(room.location.x,room.location.y));
+
                     }
                 }
+                */
             }
         });
 
