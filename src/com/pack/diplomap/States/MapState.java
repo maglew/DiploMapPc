@@ -121,11 +121,11 @@ public class MapState extends State
                         if(room.roomInfo.getNumber() ==num)
                         {
                             State.getCurrentState().drawMap.selectedfloor=floornum;
-                            State.getCurrentState().mapCamera.relativeworldlocation.setLocation( new Point(room.location.x,room.location.y));
-                            State.getCurrentState().drawMap.floors.get(floornum).drawObjects.pointer.location=((new MyPoint(room.location.x,room.location.y) ));
+                         //   State.getCurrentState().mapCamera.relativeworldlocation.setLocation( new Point(room.location.x,room.location.y));
+                            State.getCurrentState().drawMap.floors.get(floornum).drawObjects.addPointer(new MyPoint(room.location.x,room.location.y));
 
-                          //  State.getCurrentState().drawMap.floors.get(floornum).drawObjects.addPointer((new MyPoint(room.location.x,room.location.y) ));
-                          //  State.getCurrentState().drawMap.floors.get(floornum).drawObjects.clearadd();
+                            //State.getCurrentState().drawMap.floors.get(floornum).drawObjects.clearadd();
+                                   // location=(new MyPoint(room.location.x,room.location.y));
                         }
                     }
 

@@ -4,68 +4,50 @@ import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MyPointer extends MapElement implements Serializable
+public class MyPointer
 {
-    private static final long serialVersionUID = -1515169504847457796L;
-/*
-    public Grid()
-    {
-        this.deletable = false;
-        this.width = 100;
-        this.diagquads = 10;
-        this.length = 50;
-        location=new MyPoint(0, 0);
-        elemid = ++MapElement.numInstances + "G";
-    }
-    */
+    public MyPoint location ;
+    public ArrayList<MyPoint> points = new ArrayList<>();
+
     public MyPointer(MyPoint coord)
     {
-        this.deletable = false;
+
         location = coord;
-        this.touchzone.add(0,new MyPoint(location.x   ,location.y  ));
-        this.touchzone.add(1,new MyPoint(location.x   -50,location.y   - 50));
-        this.touchzone.add(2,new MyPoint(location.x   + 50,location.y   - 50));
-        elemid = ++MapElement.numInstances + "P";
+        this.points.add(0,new MyPoint(location.x   ,location.y  ));
+        this.points.add(1,new MyPoint(location.x   -50,location.y   - 50));
+        this.points.add(2,new MyPoint(location.x   + 50,location.y   - 50));
+
     }
 
     public MyPointer()
     {
-        this.movable = true;
-        this.deletable = false;
+
         location = new MyPoint(0,0);
-        this.touchzone.add(0,new MyPoint(location.x   ,location.y  ));
-        this.touchzone.add(1,new MyPoint(location.x   -50,location.y   - 50));
-        this.touchzone.add(2,new MyPoint(location.x   + 50,location.y   - 50));
-        elemid = ++MapElement.numInstances + "P";
+        this.points.add(0,new MyPoint(location.x   ,location.y  ));
+        this.points.add(1,new MyPoint(location.x   -50,location.y   - 50));
+        this.points.add(2,new MyPoint(location.x   + 50,location.y   - 50));
+
 
     }
 
-    @Override
+
     public  void tick()
     {
 
     }
 
-    @Override
     public  void render(Graphics g)
     {
-
         g.setColor(Color.red);
         Polygon poly=new Polygon();
-        for(int i=0;i<touchzone.size();i++)
+        for(int i=0;i<points.size();i++)
         {
-            poly.addPoint(touchzone.get(i).x,touchzone.get(i).y);
+            poly.addPoint(points.get(i).x,points.get(i).y);
         }
-     //   g.drawPolygon(poly);
         g.fillPolygon(poly);
-
     }
 
-    @Override
-    public boolean touchhit(Point coord)
-    {
-        return false;
-    }
+
 
 
 
