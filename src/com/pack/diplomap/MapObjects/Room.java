@@ -162,7 +162,7 @@ public class Room extends MapElement implements Serializable
             {
                 State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.elements.add(new Edge(new MyPoint( edges.get(edges.size() - 1).location.x - 15, edges.get( edges.size() - 1).location.y - 15)));
                 State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.edges.add(new Edge(new MyPoint( edges.get(edges.size()-1).location.x-10, edges.get( edges.size() - 1).location.y - 10)));
-                State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.rasst();
+                State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.clearadd();
                 edges.add(State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.edges.get( State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.edges.size()-1));
                 walls.remove(walls.size()-1);
                 walls.add(new Wall(edges.get( edges.size()-2), edges.get( edges.size() - 1)));

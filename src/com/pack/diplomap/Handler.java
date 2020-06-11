@@ -2,6 +2,7 @@ package com.pack.diplomap;
 
 import com.pack.diplomap.Interface.MouseManager;
 import com.pack.diplomap.States.State;
+import com.pack.diplomap.States.Window;
 
 public class Handler {
 

@@ -1,8 +1,9 @@
-package com.pack.diplomap;
+package com.pack.diplomap.States;
 
 
-import com.pack.diplomap.States.State;
-import com.pack.diplomap.States.*;
+import com.pack.diplomap.Handler;
+import com.pack.diplomap.Main;
+
 import com.pack.diplomap.gfx.Assets;
 
 import javax.swing.*;
@@ -14,9 +15,7 @@ public class Window
 
     CardLayout cardLayout;
 
-
     Handler handler;
-
 
     public State menuState;
     public State mapState;
@@ -47,7 +46,6 @@ public class Window
         frame.setVisible(true);
         frame.setLayout(new BorderLayout());
 
-
         menuState=new MenuState(handler);
         mapState=new MapState(handler);
         redactState=new RedactorState(handler);
@@ -55,14 +53,10 @@ public class Window
         cardLayout = new CardLayout();
          cardPanel = new JPanel(cardLayout);
 
-
-
         cardPanel.add(menuState,"menu");
         cardPanel.add(mapState,"map");
         cardPanel.add(redactState,"redactor");
         State.setCurrentState(Main.window.menuState);
-
-
 
         frame.add(cardPanel,BorderLayout.CENTER);
         frame.setVisible(true);

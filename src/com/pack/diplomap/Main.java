@@ -1,5 +1,7 @@
 package com.pack.diplomap;
 
+import com.pack.diplomap.States.Window;
+
 public class Main
 {
     public static Window window;

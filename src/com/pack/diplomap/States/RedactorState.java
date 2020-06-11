@@ -149,7 +149,7 @@ public class RedactorState extends State
         addButt.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event)
             {
-                State.getCurrentState().drawMap.add();
+                State.getCurrentState().drawMap.addfloors();
             }
         });
         zeroButt.addActionListener(new ActionListener() {

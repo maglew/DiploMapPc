@@ -18,7 +18,7 @@ public  class DrawObjects implements Serializable
 
     public DrawObjects()
     {
-        rasst();
+        clearadd();
     }
 
 
@@ -28,7 +28,7 @@ public  class DrawObjects implements Serializable
     }
 
 
-    public  void rasst()
+    public  void clearadd()
     {
         elements.clear();
         elements.add(image);
@@ -36,6 +36,27 @@ public  class DrawObjects implements Serializable
         elements.addAll(edges);
         elements.addAll(rooms);
         elements.addAll(walls);
+    }
+
+    public  void add()
+    {
+
+        elements.add(image);
+        elements.addAll(grids);
+        elements.addAll(edges);
+        elements.addAll(rooms);
+        elements.addAll(walls);
+    }
+
+    public  void clear()
+    {
+        elements.clear();
+    }
+
+    public  void addimage()
+    {
+
+        elements.add(image);
     }
 
 
@@ -112,7 +133,7 @@ public  class DrawObjects implements Serializable
     {
         // elements.add(new com.com.pack.diplommapandr.Edge(coord));
         edges.add(new Edge(coord));
-        rasst();
+        clearadd();
     }
 
 
@@ -123,13 +144,13 @@ public  class DrawObjects implements Serializable
         edges.add(new Edge(new MyPoint(coord.x + 50, coord.y + 50)));
         edges.add(new Edge(new MyPoint(coord.x - 50, coord.y + 50)));
         rooms.add(new Room(edges.get(edges.size()-4), edges.get(edges.size() - 3), edges.get(edges.size() - 2), edges.get(edges.size() - 1)));
-        rasst();
+        clearadd();
     }
 
     public  void addNewWall(int a, int b)
     {
         walls.add(new Wall(edges.get(a-1),edges.get(b-1)));
-        rasst();
+        clearadd();
     }
 
 }

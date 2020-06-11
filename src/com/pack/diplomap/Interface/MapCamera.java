@@ -9,7 +9,7 @@ import java.awt.*;
 public  class MapCamera
 {
     Handler handler;
-    public static float size = 1;
+    public static float size = 0.5f;
     public  Point  relativeworldlocation = new Point(0, 0);
     public static double rotate=0;
     static Rectangle screenRect;

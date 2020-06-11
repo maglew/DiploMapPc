@@ -1,0 +1,35 @@
+@startuml
+
+ class Window
+{
+    public JFrame frame;
+
+    CardLayout cardLayout;
+
+
+    Handler handler;
+
+
+    public State menuState;
+    public State mapState;
+    public State redactState;
+
+    JPanel cardPanel;
+
+    public String title;
+    public int width, height;
+
+
+    public Window(String title, int width, int height){
+        this.title = title;
+        this.width = width;
+        this.height = height;
+        handler=new Handler(this);
+        Assets.init();
+
+
+    }
+
+
+
+@enduml

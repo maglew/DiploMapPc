@@ -8,14 +8,20 @@ public class Assets
 
     public static void init()
     {
+        /*
         SpriteSheet first = new SpriteSheet(ImageLoader.loadImage("/textures/1floor.png"));
         SpriteSheet second = new SpriteSheet(ImageLoader.loadImage("/textures/2floor.png"));
         SpriteSheet third = new SpriteSheet(ImageLoader.loadImage("/textures/3floor.png"));
         SpriteSheet fourth = new SpriteSheet(ImageLoader.loadImage("/textures/4floor.png"));
         SpriteSheet mapsheet = new SpriteSheet(ImageLoader.loadImage("/textures/map.png"));
+*/
+        SpriteSheet first = new SpriteSheet(ImageLoader.loadImage("/textures/firstfloor.jpg"));
+        SpriteSheet second = new SpriteSheet(ImageLoader.loadImage("/textures/secondfloor.jpg"));
+        SpriteSheet third = new SpriteSheet(ImageLoader.loadImage("/textures/thirdfloor.jpg"));
+        SpriteSheet fourth = new SpriteSheet(ImageLoader.loadImage("/textures/fourthfloor.jpg"));
+        //SpriteSheet mapsheet = new SpriteSheet(ImageLoader.loadImage("/textures/map.jpg"));
 
-
-          map=mapsheet.getSheet();
+       //   map=mapsheet.getSheet();
           firstFloor = first.getSheet();
           secondFloor = second.getSheet();
           thirdFloor = third.getSheet();

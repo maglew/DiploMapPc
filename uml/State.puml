@@ -1,0 +1,16 @@
+@startuml
+
+  class State
+{
+	public  int exception=0;
+	public Logs log;
+	public MainThread thread;
+	public DrawMap drawMap;
+	public Canvas canvas;
+	public MapCamera mapCamera;
+	public MouseManager mouseManager;
+
+	public Graphics2D g2;
+}
+
+@enduml
