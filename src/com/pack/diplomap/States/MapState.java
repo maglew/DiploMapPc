@@ -12,6 +12,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 public class MapState extends State
 {
     int i=0;
@@ -96,13 +97,16 @@ public class MapState extends State
     @Override
     public void render(Graphics g)
     {
-        mapCamera.render(g);
-        g2= (Graphics2D) g;
         mapInterface.render(g);
-        g2.translate(mapCamera.getWorldloc().x,mapCamera.getWorldloc().y);
-        g2.scale(mapCamera.getSize(),mapCamera.getSize());
+        mapCamera.render(g);
+
+        g2d= (Graphics2D) g;
+
+        g2d.translate(mapCamera.getWorldloc().x,mapCamera.getWorldloc().y);
+        g2d.scale(mapCamera.getSize(),mapCamera.getSize());
         drawMap.render(g);
 
+        g2d.dispose();
     }
 
     void buttlistadd()

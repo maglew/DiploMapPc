@@ -116,11 +116,11 @@ public class RedactorState extends State
     public void render(Graphics g)
     {
         mapCamera.render(g);
-        g2= (Graphics2D) g;
+        g2d= (Graphics2D) g;
         redactorInterface.render(g);
-        g2.translate(mapCamera.getWorldloc().x,mapCamera.getWorldloc().y);
-        g2.scale(mapCamera.getSize(),mapCamera.getSize());
-        g2.rotate(mapCamera.getRotate());
+        g2d.translate(mapCamera.getWorldloc().x,mapCamera.getWorldloc().y);
+        g2d.scale(mapCamera.getSize(),mapCamera.getSize());
+        g2d.rotate(mapCamera.getRotate());
         drawMap.render(g);
     }
 

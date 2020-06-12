@@ -20,7 +20,7 @@ public abstract class State extends JPanel
 	public MapCamera mapCamera;
 	public MouseManager mouseManager;
 
-	public Graphics2D g2;
+	public Graphics2D g2d;
 
 	public State()
 	{
