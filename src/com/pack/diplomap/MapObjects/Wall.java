@@ -60,20 +60,21 @@ public class Wall extends MapElement implements Serializable
     @Override
     public  void render(Graphics g)
     {
-        g.setColor(Color.GREEN);
+        if(State.getCurrentState().drawing) {
+            g.setColor(Color.GREEN);
 
 
-        g.drawLine(A.location.x,A.location.y,B.location.x,B.location.y);
+            g.drawLine(A.location.x, A.location.y, B.location.x, B.location.y);
 
 
-        g.setColor(Color.blue);
-        Polygon poly=new Polygon();
-        for(int i=0;i<touchzone.size();i++)
-        {
-            poly.addPoint(touchzone.get(i).x,touchzone.get(i).y);
+            g.setColor(Color.blue);
+            Polygon poly = new Polygon();
+            for (int i = 0; i < touchzone.size(); i++) {
+                poly.addPoint(touchzone.get(i).x, touchzone.get(i).y);
+            }
+
+            g.drawPolygon(poly);
         }
-
-        g.drawPolygon(poly);
     }
 
     public int getId()

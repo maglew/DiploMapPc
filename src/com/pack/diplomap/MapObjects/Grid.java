@@ -1,6 +1,8 @@
 package com.pack.diplomap.MapObjects;
 
 
+import com.pack.diplomap.States.State;
+
 import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -51,12 +53,12 @@ public class Grid extends MapElement implements Serializable
     @Override
     public  void render(Graphics g)
     {
-        g.setColor(Color.white);
-        for(int i=0;i<=diagquads;i++)
-        {
-            for(int j=0;j<=diagquads;j++)
-            {
-                g.drawRect(location.x+width*j,location.y+width *i,width,width);
+        if(State.getCurrentState().drawing) {
+            g.setColor(Color.white);
+            for (int i = 0; i <= diagquads; i++) {
+                for (int j = 0; j <= diagquads; j++) {
+                    g.drawRect(location.x + width * j, location.y + width * i, width, width);
+                }
             }
         }
     }

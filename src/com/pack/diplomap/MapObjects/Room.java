@@ -111,25 +111,24 @@ public class Room extends MapElement implements Serializable
     @Override
     public  void render(Graphics g)
     {
-        g.setColor(Color.WHITE);
-        g.drawRect(location.x-5, location.y - 5, 10, 10);
-        for (int j = 0; j < edges.size() ; j++)
-        {
-            edges.get(j).render(g);
+        if(State.getCurrentState().drawing) {
+            g.setColor(Color.WHITE);
+            g.drawRect(location.x - 5, location.y - 5, 10, 10);
+            for (int j = 0; j < edges.size(); j++) {
+                edges.get(j).render(g);
+            }
+            for (int j = 0; j < walls.size(); j++) {
+                walls.get(j).render(g);
+            }
+            //   g.setColor(Color.red);
+            g.setColor(new Color(255, 0, 0, 128));
+            Polygon poly = new Polygon();
+            for (int i = 0; i < touchzone.size(); i++) {
+                poly.addPoint(touchzone.get(i).x, touchzone.get(i).y);
+            }
+            g.fillPolygon(poly);
+            //  g.drawPolygon(poly);
         }
-        for (int j = 0; j < walls.size() ; j++)
-        {
-            walls.get(j).render(g);
-        }
-     //   g.setColor(Color.red);
-        g.setColor(new Color(255,0,0,128) );
-        Polygon poly=new Polygon();
-        for(int i=0;i<touchzone.size();i++)
-        {
-            poly.addPoint(touchzone.get(i).x,touchzone.get(i).y);
-        }
-        g.fillPolygon(poly);
-      //  g.drawPolygon(poly);
     }
 
     @Override

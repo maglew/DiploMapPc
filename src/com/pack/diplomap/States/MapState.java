@@ -27,6 +27,7 @@ public class MapState extends State
     JButton findButt;
     public MapState(Handler handler)
     {
+        drawing=false;
         drawMap=new DrawMap();
         mapCamera=new MapCamera(handler);
 

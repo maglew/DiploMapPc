@@ -42,11 +42,13 @@ public class MapInterface
     public void render(Graphics g)
     {
         g.setColor(Color.red);
-        g.drawString(regime,650,100);
-        g.drawString("relmouse:"+MouseManager.getRelmousecoord().x+"."+MouseManager.getRelmousecoord().y,650,120);
-        g.drawString("temobjid:"+aimObjId,650,110);
-        g.drawString("chosedobj:"+chosedObjId+"",650,130);
-        g.drawString("floor:"+floor+"",650,130);
+        if(State.getCurrentState().drawing) {
+            g.drawString(regime, 650, 100);
+            g.drawString("relmouse:" + MouseManager.getRelmousecoord().x + "." + MouseManager.getRelmousecoord().y, 650, 120);
+            g.drawString("temobjid:" + aimObjId, 650, 110);
+            g.drawString("chosedobj:" + chosedObjId + "", 650, 130);
+            g.drawString("floor:" + floor + "", 650, 130);
+        }
     }
 
 }

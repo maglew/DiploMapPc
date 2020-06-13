@@ -33,6 +33,7 @@ public class RedactorState extends State
     JTextField textField;
 
     public RedactorState(Handler handler) {
+        drawing=true;
         drawMap = new DrawMap();
         mapCamera = new MapCamera(handler);
 

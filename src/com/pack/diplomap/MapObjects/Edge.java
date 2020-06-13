@@ -54,16 +54,16 @@ public class Edge extends MapElement implements Serializable
     @Override
     public  void render(Graphics g)
     {
-        g.setColor(Color.yellow);
-        g.drawRect( location.x - width / 4, location.y - width / 4, width / 2, width / 2);
+        if(State.getCurrentState().drawing) {
+            g.setColor(Color.yellow);
+            g.drawRect(location.x - width / 4, location.y - width / 4, width / 2, width / 2);
 
-        g.setColor(Color.red);
-        Polygon poly=new Polygon();
-        for(int i=0;i<touchzone.size();i++)
-        {
-            poly.addPoint(touchzone.get(i).x,touchzone.get(i).y);
-        }
-        g.drawPolygon(poly);
+            g.setColor(Color.red);
+            Polygon poly = new Polygon();
+            for (int i = 0; i < touchzone.size(); i++) {
+                poly.addPoint(touchzone.get(i).x, touchzone.get(i).y);
+            }
+            g.drawPolygon(poly);
 /*
     g.setColor(Color.blue);
     Polygon polytouch=new Polygon();
@@ -73,6 +73,7 @@ public class Edge extends MapElement implements Serializable
     }
     g.drawPolygon(polytouch);
 */
+        }
     }
 
     @Override
