@@ -13,10 +13,10 @@ public  class DrawObjects implements Serializable
     public ArrayList<Grid> grids = new ArrayList<>();
     public ArrayList<Room> rooms = new ArrayList<>();
     public ArrayList<Wall> walls = new ArrayList<>();
-    public  MapImage image=new MapImage();
+   // public  MapImage image=new MapImage();
    // public ArrayList<MyPointer> myPointers = new ArrayList<>();
     public transient MyPointer pointer=new MyPointer();
-
+    public ArrayList<MapImage> images = new ArrayList<>();
     public DrawObjects()
     {
         clearadd();
@@ -31,7 +31,7 @@ public  class DrawObjects implements Serializable
     public  void clearadd()
     {
         elements.clear();
-        elements.add(image);
+        elements.addAll(images);
        // elements.addAll(grids);
         elements.addAll(edges);
         elements.addAll(rooms);
@@ -118,7 +118,7 @@ public  class DrawObjects implements Serializable
 
     public  void addimage(MapImage im)
     {
-        image=im;
+        images.add(im);
         clearadd();
     }
 

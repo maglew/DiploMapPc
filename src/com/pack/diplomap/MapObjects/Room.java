@@ -49,7 +49,7 @@ public class Room extends MapElement implements Serializable
         elemid =++MapElement.numInstances+"R";
         Room.Statnumber++;
         number+=Room.Statnumber;
-        roomInfo=new RoomInfo();
+        roomInfo=new RoomInfo((State.getCurrentState().drawMap.selectedfloor+1)*100+State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.rooms.size());
     }
 
     public Room()

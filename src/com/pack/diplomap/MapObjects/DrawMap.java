@@ -83,10 +83,15 @@ public class DrawMap implements Serializable
         floors.get(2).drawObjects.addPointer((new MyPoint(0,0) ));
         floors.get(3).drawObjects.addPointer((new MyPoint(0,0) ));
 
-        floors.get(0).drawObjects.image= new MapImage(Assets.firstFloor,new MyPoint(0,0) );
-        floors.get(1).drawObjects.image= new MapImage(Assets.secondFloor,new MyPoint(0,0) );
-        floors.get(2).drawObjects.image= new MapImage(Assets.thirdFloor,new MyPoint(0,0) );
-        floors.get(3).drawObjects.image= new MapImage(Assets.forthFloor,new MyPoint(0,0) );
+        floors.get(0).drawObjects.images.add(new MapImage(Assets.firstFloor,new MyPoint(0,0)));
+        floors.get(1).drawObjects.images.add(new MapImage(Assets.secondFloor,new MyPoint(0,0)));
+        floors.get(2).drawObjects.images.add(new MapImage(Assets.thirdFloor,new MyPoint(0,0)));
+        floors.get(3).drawObjects.images.add(new MapImage(Assets.forthFloor,new MyPoint(0,0)));
+
+        floors.get(0).drawObjects.images.add(new MapImage(Assets.firstlegend,new MyPoint(2700,0)));
+        floors.get(1).drawObjects.images.add(new MapImage(Assets.secondlegend,new MyPoint(2700,0)));
+        floors.get(2).drawObjects.images.add(new MapImage(Assets.thirdlegend,new MyPoint(2700,0)));
+        floors.get(3).drawObjects.images.add(new MapImage(Assets.forthlegend,new MyPoint(2700,0)));
 
         floors.get(0).drawObjects.clearadd();
         floors.get(1).drawObjects.clearadd();

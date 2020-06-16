@@ -5,6 +5,9 @@ import java.io.Serializable;
 public class RoomInfo implements Serializable
 {
     private static final long serialVersionUID = -1315152605557457796L;
+
+  //  static int statnum;
+
     int number;
     String name;
     String description;
@@ -18,6 +21,15 @@ public class RoomInfo implements Serializable
          description="";
          site="";
          telephone="";
+    }
+
+    public RoomInfo(int num)
+    {
+        number=num;
+        name="store-"+num;
+        description="some store";
+        site="www.store.ru";
+        telephone="X-XXX-XXX-XX-XX";
     }
 
     public int getNumber() {
