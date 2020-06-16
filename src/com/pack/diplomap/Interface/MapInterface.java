@@ -1,6 +1,7 @@
 package com.pack.diplomap.Interface;
 
 import com.pack.diplomap.MapObjects.MyPoint;
+import com.pack.diplomap.MapObjects.Room;
 import com.pack.diplomap.States.State;
 
 import java.awt.*;
@@ -9,6 +10,7 @@ import java.awt.*;
 
 public class MapInterface
 {
+    public static boolean opened = false;
     public static int chosedObjId = -1;
     public static int aimObjId = -1;
     public static int floor =  0;
@@ -32,9 +34,25 @@ public class MapInterface
         if(!MouseManager.left)
         {
             chosedObjId=-1;
+            opened = false;
         }
-        switch (regime)
+
+        if (MouseManager.left)
         {
+            chosedObjId= State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.searchObjByCoord(new Point((MouseManager.getRelmousecoord().x), MouseManager.getRelmousecoord().y));
+            if (chosedObjId != -1)
+            {
+
+                if (!opened && State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.getElement(chosedObjId) instanceof Room)
+                {
+                    RoomInfoForm roomInfoForm = new RoomInfoForm(chosedObjId);
+
+                    MouseManager.left = false;
+
+
+                }
+            }
+
 
         }
     }

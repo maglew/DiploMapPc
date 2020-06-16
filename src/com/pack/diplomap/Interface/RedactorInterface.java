@@ -170,6 +170,8 @@ public class RedactorInterface
             g.drawString("relmouse:" + MouseManager.getRelmousecoord().x + "." + MouseManager.getRelmousecoord().y, 650, 120);
             g.drawString("temobjid:" + aimObjId, 650, 110);
             g.drawString("chosedobj:" + chosedObjId + "", 650, 130);
+
+            g.drawString("last room" + (((State.getCurrentState().drawMap.selectedfloor+1)*100)+(State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.rooms.size())-1) + "", 650, 150);
         }
     }
 }
