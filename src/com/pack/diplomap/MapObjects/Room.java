@@ -112,7 +112,10 @@ public class Room extends MapElement implements Serializable
     public  void render(Graphics g)
     {
         if(State.getCurrentState().drawing) {
+
+
             g.setColor(Color.WHITE);
+
             g.drawRect(location.x - 5, location.y - 5, 10, 10);
             for (int j = 0; j < edges.size(); j++) {
                 edges.get(j).render(g);
@@ -127,6 +130,10 @@ public class Room extends MapElement implements Serializable
                 poly.addPoint(touchzone.get(i).x, touchzone.get(i).y);
             }
             g.fillPolygon(poly);
+            g.setColor(Color.blue);
+            g.setFont(new Font("TimesRoman", Font.PLAIN, 18));
+            g.drawString(roomInfo.getNumber()+"",location.x+5,location.y);
+
             //  g.drawPolygon(poly);
         }
     }
