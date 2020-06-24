@@ -13,10 +13,9 @@ public  class DrawObjects implements Serializable
     public ArrayList<Grid> grids = new ArrayList<>();
     public ArrayList<Room> rooms = new ArrayList<>();
     public ArrayList<Wall> walls = new ArrayList<>();
-   // public  MapImage image=new MapImage();
-   // public ArrayList<MyPointer> myPointers = new ArrayList<>();
     public transient MyPointer pointer=new MyPointer();
     public ArrayList<MapImage> images = new ArrayList<>();
+
     public DrawObjects()
     {
         clearadd();

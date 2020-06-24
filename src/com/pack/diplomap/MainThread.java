@@ -37,13 +37,13 @@ public class MainThread implements Runnable
     {
         State.getCurrentState().tick();
 
-
     }
 
     private void render()
     {
         bs =State.getCurrentState().canvas.getBufferStrategy();
-        if(bs == null){
+        if(bs == null)
+        {
             State.getCurrentState().canvas.createBufferStrategy(3);
             return;
        }
@@ -111,11 +111,21 @@ public class MainThread implements Runnable
         if(!running)
             return;
         running = false;
+
+        try {
+           // thread.stop();
+            thread.interrupt();
+            bs=null;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        /*
         try {
             thread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        */
     }
 
 

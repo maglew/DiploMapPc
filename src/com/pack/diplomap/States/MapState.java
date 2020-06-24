@@ -188,8 +188,9 @@ public class MapState extends State
         exitButt.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 Main.window.getCardLayout().show(Main.window.getCardPanel(), "menu");
-             //   thread.stop();
+
                 State.setCurrentState(Main.window.menuState);
+                thread.stop();
             }
         });
 
