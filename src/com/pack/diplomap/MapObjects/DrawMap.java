@@ -32,10 +32,10 @@ public class DrawMap implements Serializable
     {
         DrawMap newmap=new DrawMap();
         try {
-           // File myfile = new File("C://Users//whins//Desktop" , "DiplomapPc.dat");
-            File myfile = new File(
-                    getClass().getClassLoader().getResource("map/DiplomapPc.dat").getFile()
-            );
+           File myfile = new File("C://Users//whins//Desktop" , "DiplomapPc.dat");
+          //  File myfile = new File(
+           //         getClass().getClassLoader().getResource("map/DiplomapPc.dat").getFile()
+          //  );
 
             if (!myfile.exists())
             {
@@ -62,10 +62,10 @@ public class DrawMap implements Serializable
     public void save()
     {
         try {
-           // File myfile = new File("C://Users//whins//Desktop" , "DiplomapPc.dat");
-            File myfile = new File(
-                    getClass().getClassLoader().getResource("map/DiplomapPc.dat").getFile()
-            );
+            File myfile = new File("C://Users//whins//Desktop" , "DiplomapPc.dat");
+           // File myfile = new File(
+          //          getClass().getClassLoader().getResource("map/DiplomapPc.dat").getFile()
+          //  );
             if (myfile.exists ())
                 myfile.delete ();
 

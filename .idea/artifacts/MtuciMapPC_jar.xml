@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MtuciMapPC:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MtuciMapPC_jar</output-path>
+    <root id="archive" name="MtuciMapPC.jar">
+      <element id="module-output" name="MtuciMapPC" />
+    </root>
+  </artifact>
+</component>
